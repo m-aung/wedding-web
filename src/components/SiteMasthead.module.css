@@ -1,0 +1,78 @@
+.wrapper {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .wrapper {
+    display: block;
+    background: var(--surface);
+    padding-top: 28px;
+    padding-bottom: 22px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .content :global(.title-sm) {
+    color: #8f8b87;
+  }
+
+  .title {
+    font-family: 'Pinyon Script', cursive;
+    color: #8b8681 !important;
+    margin-top: 0;
+    font-size: clamp(4rem, 6.5vw, 5.25rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .amp {
+    font-style: italic;
+    padding-inline: 0.15em;
+  }
+
+  .meta {
+    color: #8f8b87 !important;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: 0.92rem;
+    letter-spacing: 0.18em;
+  }
+
+  .countdown {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8f8b87;
+    margin-bottom: 20px;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .link {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #6f6a66;
+    white-space: nowrap;
+  }
+
+  .active {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+  }
+}

@@ -1,0 +1,239 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 249, 248, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(47, 51, 51, 0.05);
+}
+
+@media (min-width: 769px) {
+  .header {
+    display: none;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  height: 64px;
+}
+
+@media (min-width: 769px) {
+  .inner {
+    display: block;
+    height: auto;
+    gap: 0;
+  }
+
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--on-surface);
+  white-space: nowrap;
+}
+
+@media (min-width: 769px) {
+  .logo {
+    font-size: 0.98rem;
+    letter-spacing: 0.03em;
+    color: #4f4b47;
+  }
+}
+
+.logoFull {
+  display: inline;
+}
+
+.logoMonogram {
+  display: none;
+}
+
+.logo:hover {
+  color: var(--secondary);
+}
+
+.desktopMasthead {
+  display: none;
+}
+
+.desktopBrand {
+  color: #8b8681;
+}
+
+.desktopAmp {
+  font-style: italic;
+  padding-inline: 0.15em;
+}
+
+.desktopMeta {
+  color: #8f8b87;
+}
+
+.desktopCountdown {
+  color: #8f8b87;
+}
+
+/* ── Desktop nav ── */
+.desktopNav {
+  display: flex;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: clamp(18px, 2vw, 32px);
+}
+
+.navLink {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  color: #6f6a66;
+  transition: color 200ms ease;
+  white-space: nowrap;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: var(--on-surface);
+}
+
+/* ── Hamburger button ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: -8px;
+}
+
+.bar {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--on-surface);
+  transition: transform 250ms ease, opacity 250ms ease;
+  transform-origin: center;
+}
+
+.barTopOpen  { transform: translateY(6.5px) rotate(45deg); }
+.barMidOpen  { opacity: 0; }
+.barBotOpen  { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Mobile drawer ── */
+.mobileNav {
+  border-top: 1px solid rgba(47, 51, 51, 0.08);
+  background: rgba(250, 249, 248, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.mobileList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 16px;
+}
+
+.mobileLink {
+  display: block;
+  padding: 14px 24px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  transition: color 200ms ease, background 200ms ease;
+}
+
+.mobileLink:hover,
+.mobileLink.active {
+  color: var(--on-surface);
+  background: rgba(47, 51, 51, 0.04);
+}
+
+/* ── Responsive breakpoint ── */
+@media (max-width: 768px) {
+  .inner {
+    position: relative;
+    justify-content: center;
+    height: 72px;
+  }
+
+  .header::after {
+    display: none;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 0;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.15rem;
+    color: var(--secondary);
+  }
+
+  .logoFull {
+    display: none;
+  }
+
+  .logoMonogram {
+    display: inline;
+    letter-spacing: 0.08em;
+  }
+
+  .mobileNav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    min-height: calc(100svh - 72px);
+    border-top: 1px solid rgba(47, 51, 51, 0.12);
+    background: rgba(250, 249, 248, 0.985);
+  }
+
+  .mobileList {
+    padding: 0 16px 20px;
+  }
+
+  .mobileLink {
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(47, 51, 51, 0.16);
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: none;
+  }
+}

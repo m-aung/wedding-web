@@ -1,0 +1,57 @@
+.pageTitle {
+  margin-top: 12px;
+  line-height: 1;
+}
+
+.chapter + .chapter {
+  background: var(--surface-container-low);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 6vw, 96px);
+  align-items: start;
+}
+
+.imageRight .grid {
+  direction: rtl;
+}
+
+.imageRight .grid > * {
+  direction: ltr;
+}
+
+.imageWrap {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+
+.imageWrap:hover img {
+  transform: scale(1.03);
+}
+
+.text {
+  padding-block: 24px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .imageRight .grid {
+    direction: ltr;
+  }
+
+  .imageWrap {
+    aspect-ratio: 16 / 9;
+  }
+}

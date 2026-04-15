@@ -1,0 +1,19 @@
+.hero {
+  padding-top: clamp(96px, 12vw, 140px);
+}
+
+.pageTitle {
+  margin-top: 8px;
+  line-height: 1;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.item {
+  background: var(--surface-container-lowest);
+  padding: clamp(24px, 3vw, 36px);
+}

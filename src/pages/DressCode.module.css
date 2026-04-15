@@ -1,0 +1,26 @@
+.hero {
+  padding-top: clamp(96px, 12vw, 140px);
+}
+
+.pageTitle {
+  margin-top: 8px;
+  line-height: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.card {
+  background: var(--surface-container-lowest);
+  padding: clamp(24px, 3vw, 36px);
+  min-height: 100%;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

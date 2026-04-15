@@ -1,0 +1,158 @@
+.hero {
+  position: relative;
+  min-height: 50svh;
+  display: flex;
+  align-items: flex-end;
+}
+
+
+.heroImg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.heroImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.55);
+}
+
+.heroContent {
+  position: relative;
+  padding-bottom: clamp(48px, 8vh, 80px);
+  padding-top: 100px;
+  color: #faf7f6;
+}
+
+.heroContent .title-sm {
+  color: rgba(250, 247, 246, 0.7);
+}
+
+.pageTitle {
+  color: #faf7f6 !important;
+  margin-top: 8px;
+}
+
+/* ── Hotels ──────────────────────────────────────────── */
+.hotels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 4vw, 64px);
+  margin-top: 48px;
+}
+
+.hotelCard {
+  background: var(--surface-container-lowest);
+  display: flex;
+  flex-direction: column;
+}
+
+.hotelImg {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.hotelImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+
+.hotelCard:hover .hotelImg img {
+  transform: scale(1.04);
+}
+
+.hotelInfo {
+  padding: clamp(24px, 3vw, 40px);
+  flex: 1;
+}
+
+.hotelMeta {
+  display: flex;
+  gap: 40px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(174, 179, 178, 0.2);
+}
+
+/* ── Travel tips ─────────────────────────────────────── */
+.tips {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.tip {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* ── Registry ────────────────────────────────────────── */
+.registry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 48px);
+  margin-top: 48px;
+}
+
+.registryCard {
+  background: var(--surface-container-lowest);
+  display: flex;
+  flex-direction: column;
+}
+
+.registryImg {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--surface-container-high);
+}
+
+.registryImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+
+.registryCard:hover .registryImg img {
+  transform: scale(1.04);
+}
+
+.registryInfo {
+  padding: clamp(20px, 2.5vw, 32px);
+  flex: 1;
+}
+
+.visitBtn {
+  font-size: 0.75rem !important;
+}
+
+.fundCard {
+  background: linear-gradient(160deg, var(--secondary-container) 0%, var(--surface) 70%);
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .registry {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hotels {
+    grid-template-columns: 1fr;
+  }
+
+  .tips {
+    grid-template-columns: 1fr;
+  }
+
+  .registry {
+    grid-template-columns: 1fr;
+  }
+}

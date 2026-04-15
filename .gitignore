@@ -1,0 +1,13 @@
+node_modules
+dist
+
+# local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+.dev.vars
+.wrangler
+
+# editor and local tooling secrets
+.vscode/mcp.json

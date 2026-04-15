@@ -1,0 +1,362 @@
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--surface);
+  padding-top: 32px;
+  padding-bottom: 36px;
+}
+
+.heroImage {
+  position: relative;
+  order: 2;
+  width: min(780px, calc(100% - 48px));
+  margin: 20px auto 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: none;
+}
+
+.heroContent {
+  position: relative;
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 26px;
+  color: var(--on-surface);
+  gap: 0;
+  text-align: center;
+}
+
+.heroContent .title-sm {
+  display: none;
+}
+
+.heroTitle {
+  font-family: 'Pinyon Script', cursive;
+  color: #8b8681 !important;
+  margin-top: 0;
+  font-size: clamp(4rem, 6.5vw, 5.25rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.amp {
+  font-style: italic;
+  padding-inline: 0.15em;
+}
+
+.heroMeta {
+  color: #8f8b87 !important;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-size: 0.92rem;
+  letter-spacing: 0.18em;
+}
+
+.countdown {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8f8b87;
+  margin-bottom: 20px;
+}
+
+.desktopQuickNav {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  padding-bottom: 18px;
+}
+
+.desktopQuickLink {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #7f7a76;
+}
+
+.desktopQuickLinkActive {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.mobileLaceBlock {
+  display: none;
+}
+
+.desktopSessionSection {
+  display: block;
+  background: var(--surface);
+  padding: 8px 0 90px;
+}
+
+.desktopInfoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1040px;
+  margin: 0 auto;
+  border: 1px solid rgba(47, 51, 51, 0.18);
+}
+
+.desktopInfoCard {
+  padding: 14px 20px;
+  text-align: center;
+}
+
+.desktopInfoCard + .desktopInfoCard {
+  border-left: 1px solid rgba(47, 51, 51, 0.18);
+}
+
+.desktopInfoValue {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: #7f7a76;
+}
+
+.desktopRsvpWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.desktopRsvpWrap :global(.btn-primary) {
+  min-width: 60px;
+  justify-content: center;
+  padding: 8px 16px;
+  box-shadow: none;
+}
+
+.desktopWeddingDay {
+  margin-top: 44px;
+  text-align: center;
+}
+
+.desktopWeddingLabel {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7f7a76;
+}
+
+.desktopWeddingDate {
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8f8b87;
+}
+
+.mobileHomeNavSection {
+  display: none;
+}
+
+.mobileWeddingLabel {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+.mobileWeddingDate {
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+.mobileQuickNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileQuickLink {
+  text-align: center;
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(47, 51, 51, 0.18);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--on-surface-variant);
+}
+
+.mobileQuickLinkActive {
+  position: relative;
+  color: var(--on-surface);
+}
+
+.mobileQuickLinkActive::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 64px;
+  height: 1px;
+  transform: translateX(-50%);
+  background: currentColor;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    display: block;
+    background: var(--surface);
+  }
+
+  .heroImage {
+    position: relative;
+    inset: auto;
+    height: 252px;
+    overflow: hidden;
+  }
+
+  .heroImage img {
+    filter: none;
+    object-position: center 26%;
+    transform: scale(1.04);
+  }
+
+  .heroContent {
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding-top: 54px;
+    padding-bottom: 8px;
+    color: var(--on-surface);
+    background: var(--surface);
+  }
+
+  .heroContent::before {
+    display: none;
+  }
+
+  .heroContent .title-sm {
+    display: none;
+  }
+
+  .heroDesktopCta {
+    display: none;
+  }
+
+  .heroTitle {
+    font-family: 'Pinyon Script', cursive;
+    color: #8b8681 !important;
+    margin-top: 0;
+    font-size: clamp(3.2rem, 13vw, 4.5rem);
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  .heroMeta {
+    color: #8f8b87 !important;
+    max-width: 380px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+  }
+
+  .countdown {
+    color: #8f8b87;
+    margin-bottom: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+  }
+
+  .mobileHomeNavSection {
+    display: block;
+    background: var(--surface);
+    padding: 0 0 8px;
+  }
+
+  .mobileLaceBlock {
+    display: block;
+    height: 140px;
+    background-image: url('https://imagedelivery.net/fdRzTEFWXF8OEw2d6zGmjg/eddc8c21-f10f-4c67-4673-ee6402555400/public');
+    background-repeat: repeat-x;
+    background-position: center top;
+    background-size: auto 140px;
+    opacity: 0.72;
+  }
+
+  .mobileHomeNavInner {
+    text-align: center;
+    margin-top: -2px;
+  }
+
+  .mobileRsvpWrap {
+    margin-top: 34px;
+  }
+
+  .mobileRsvpWrap :global(.btn-primary) {
+    min-width: 86px;
+    justify-content: center;
+    padding: 12px 18px;
+    box-shadow: none;
+  }
+
+  .mobileWeddingDay {
+    margin-top: 78px;
+    margin-bottom: 52px;
+  }
+
+  .mobileWeddingLabel {
+    color: #7f7a76;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+  }
+
+  .mobileWeddingDate {
+    color: #8f8b87;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+  }
+
+  .mobileQuickNav {
+    border-top: 1px solid rgba(47, 51, 51, 0.18);
+  }
+
+  .mobileQuickLink {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    color: #7f7a76;
+  }
+
+  .desktopQuickNav,
+  .desktopSessionSection {
+    display: none;
+  }
+}
