@@ -6,11 +6,13 @@ const chapters = [
     id: 'beginning',
     label: 'Chapter One — Where It All Began',
     place: '2007–2012',
-    body: `Before there was love, there was friendship.
+    body: `Before forever, there was friendship—and then, love.
 
-We met at the same university in 2007, sharing classrooms, laughter, and the simple joy of growing up side by side. Those years—from 2008 to 2012—were filled with unforgettable moments, where friendship quietly became the foundation of something more.
+We met at the same university in 2007, sharing classrooms, laughter, and the simple joy of growing up side by side. What began as friendship soon turned into something more, and in 2008, we started our journey together.
 
-We didn't know it then, but we were already writing the first pages of our story.`,
+Those university years—from 2008 to 2012—were filled with memories that shaped us, where love grew naturally, quietly, and beautifully.
+
+We didn’t know it then, but we were already building something that would last a lifetime.`,
     image:
       'https://imagedelivery.net/fdRzTEFWXF8OEw2d6zGmjg/213eefea-bfc3-45e6-8802-86d7a4790000/public',
     imgAlt: 'University campus where Myo and Yoon first met',
