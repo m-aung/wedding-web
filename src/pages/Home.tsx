@@ -16,10 +16,6 @@ const quickLinks = [
 ]
 
 export default function Home() {
-  const daysToGo = Math.max(
-    0,
-    Math.ceil((new Date(WEDDING.date).getTime() - Date.now()) / (1000 * 60 * 60 * 24)),
-  )
   const [month = 'September', day = '19', year = '2026'] = WEDDING.date.replace(',', '').split(' ')
 
   return (
@@ -30,17 +26,6 @@ export default function Home() {
           <img src={HERO_IMG} alt={`${GROOM.nickname} and ${BRIDE.nickname}`} />
         </div>
         <div className={styles.mobileLaceBlock} aria-hidden="true" />
-
-        <div className={`container ${styles.heroContent}`}>
-          <p className="title-sm">The Union of</p>
-          <h1 className={`display-lg ${styles.heroTitle}`}>
-            {GROOM.nickname}<span className={styles.amp}>&amp;</span>{BRIDE.nickname}
-          </h1>
-          <p className={`label-md ${styles.heroMeta}`}>
-            {WEDDING.dateLong} &nbsp;•&nbsp; {WEDDING.venueCity}, NY
-          </p>
-          {daysToGo > 0 && <p className={styles.countdown}>{daysToGo} days to go!</p>}
-        </div>
       </section>
 
       <section className={styles.mobileHomeNavSection}>

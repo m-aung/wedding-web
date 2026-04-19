@@ -7,8 +7,8 @@
 
 /* ─── Design tokens ─────────────────────────────────────────── */
 :root {
-  --background:                  #faf9f8;
-  --surface:                     #faf9f8;
+  --background:                  rgb(255 255 254);
+  --surface:                     rgb(255 255 254);
   --surface-container-lowest:    #ffffff;
   --surface-container-low:       #f3f4f3;
   --surface-container:           #edeeed;
@@ -52,9 +52,7 @@ html {
 
 body {
   background-color: var(--background);
-  background-image:
-    radial-gradient(circle at top left, rgba(250, 222, 192, 0.22), transparent 0 24%),
-    radial-gradient(circle at bottom right, rgba(166, 142, 116, 0.1), transparent 0 20%);
+  background-image: none;
   color: var(--on-surface);
   font-family: var(--font-body);
   font-size: 16px;

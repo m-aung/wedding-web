@@ -1,8 +1,8 @@
 /** Design tokens extracted from Stitch "Wedding Web 2026" project */
 export const colors = {
-  background: '#faf9f8',
-  surface: '#faf9f8',
-  surfaceBright: '#faf9f8',
+  background: 'rgb(255 255 254)',
+  surface: 'rgb(255 255 254)',
+  surfaceBright: 'rgb(255 255 254)',
   surfaceContainerLowest: '#ffffff',
   surfaceContainerLow: '#f3f4f3',
   surfaceContainer: '#edeeed',
