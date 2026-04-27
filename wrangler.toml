@@ -1,4 +1,4 @@
-name = "wedding-web"
+name = "wedding-website"
 compatibility_date = "2026-04-14"
 pages_build_output_dir = "./dist"
 
