@@ -8,35 +8,27 @@ const EVENTS_IMG =
 interface Event {
   time: string
   title: string
-  venue: string
-  address: string
+  detail: string
   note?: string
-  mapsUrl: string
 }
 
 const events: Event[] = [
   {
-    time: '4:00 PM',
+    time: '3:00 PM',
     title: 'The Ceremony',
-    venue: 'The Glass House Conservatory',
-    address: WEDDING.venueAddress,
-    mapsUrl: WEDDING.venueMapsUrl,
+    detail: 'Please be seated by 2:45 PM. The ceremony will begin promptly at 3:00 PM.',
+  },
+  {
+    time: '5:00 PM',
+    title: 'Cocktail Hour',
+    detail: 'Enjoy hors d\'oeuvres, signature cocktails, and time to mingle after the ceremony.',
+    note: 'Bar service includes beer, wine, and house cocktails.',
   },
   {
     time: '6:00 PM',
-    title: 'Cocktail Hour',
-    venue: 'The West Lawn Gardens',
-    address: WEDDING.venueAddress,
-    note: 'Join us for hors d\'oeuvres and signature cocktails immediately following the ceremony.',
-    mapsUrl: WEDDING.venueMapsUrl,
-  },
-  {
-    time: '7:00 PM',
     title: 'The Reception',
-    venue: 'The Heritage Ballroom',
-    address: WEDDING.venueAddress,
-    note: 'Dinner and dancing will continue until late. Black tie requested.',
-    mapsUrl: WEDDING.venueMapsUrl,
+    detail: 'Dinner service begins at 6:30 PM, followed by toasts and dancing into the evening.',
+    note: 'Black tie requested.',
   },
 ]
 
@@ -63,6 +55,24 @@ export default function Events() {
       {/* ── Event timeline ────────────────────────────────── */}
       <section className="section">
         <div className="container">
+          <div style={{ marginBottom: 32 }}>
+            <p className="title-sm">Venue</p>
+            <h2 className="headline-md" style={{ marginTop: 8 }}>{WEDDING.venueName}</h2>
+            <p className="body-lg" style={{ marginTop: 8, color: 'var(--on-surface-variant)' }}>
+              All festivities are held at one location: {WEDDING.venueAddress}
+            </p>
+            <a
+              href={WEDDING.venueMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`btn-ghost ${styles.mapLink}`}
+              style={{ marginTop: 16 }}
+            >
+              <span className="material-icons" aria-hidden="true">north_east</span>
+              Open Venue Map
+            </a>
+          </div>
+
           <div className={styles.timeline}>
             {events.map((ev) => (
               <div key={ev.title} className={styles.eventCard}>
@@ -71,23 +81,12 @@ export default function Events() {
                 </div>
                 <div className={styles.eventBody}>
                   <p className="title-sm">{ev.title}</p>
-                  <h2 className="headline-md" style={{ marginTop: 8 }}>{ev.venue}</h2>
-                  <p className="body-lg" style={{ marginTop: 8, color: 'var(--on-surface-variant)' }}>
-                    {ev.address}
-                  </p>
+                  <p className="body-lg" style={{ marginTop: 10 }}>{ev.detail}</p>
                   {ev.note && (
-                    <p className="body-lg" style={{ marginTop: 12 }}>{ev.note}</p>
+                    <p className="body-lg" style={{ marginTop: 12, color: 'var(--on-surface-variant)' }}>
+                      {ev.note}
+                    </p>
                   )}
-                  <a
-                    href={ev.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`btn-ghost ${styles.mapLink}`}
-                    style={{ marginTop: 20 }}
-                  >
-                    <span className="material-icons" aria-hidden="true">north_east</span>
-                    View Map
-                  </a>
                 </div>
               </div>
             ))}
