@@ -1,63 +1,172 @@
+import { useState, useEffect, type FormEvent } from 'react'
+import emailjs from '@emailjs/browser'
 import styles from './TravelRegistry.module.css'
-import { COUPLE_EMAIL, HOTEL_BOOKING_CODE } from '../constants/couple'
+import { supabase } from '../lib/supabase'
+import type {
+  AccommodationRow,
+  AccommodationRequestInsert,
+  RegistryItemRow,
+  TravelTipRow,
+} from '../lib/database.types'
 
 const HERO_IMG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuC-3rBcBWfy9Lx8nTDGVfNcpos6864OogHeB9eOAx3TQXhyTnGfkyJkT8qrvc9cI5cuGrCSEW4NrzJXh10jpPhgJCjepzhs1MLZmWPV88ItpEd2dDH8JQawjEabg5-Eb5c7QUBK7bL655I6PhrgXn-HclV_h_gty5SKCdVPN-1RrzbBnlWjnuAa7LLoVeAZqX2ZpOm2D7axXV_IsNchUdnnyslFoWB7c_ol8St2JeHP0K30plDHYIXKj3NQyaTzHliYTDCnaONnTLo'
 
-const HOTEL_1_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAHRWYuisPbeuVDuEsFuL5xmCFrFd6rfdQFIjDeijtG2Og5XRbwgodsxaeSokiIl4PP0dZ0nxFj2c3nH_KugdvdZGEjZMM-SJIzmEi_CgeAUMAoytMBxfGnnN63VPdVhyDNGS2idZYjHa-7GhLmsqzvD6MpDti4NKbIslndkxf5UFrxTQ-QHhvYH0t-JdB47XhwgAZYaIcs4P-Reocixmir45Jjpq0zgs8beeiTUMGV4t8mn0bofDWZW8qn87kxQ1mQLXuHvvavD4g'
+interface RequestForm {
+  guestName: string
+  email: string
+  partySize: number
+  accommodationId: string
+  notes: string
+}
 
-const HOTEL_2_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCqqOyUUf__8j4oshblPlD92xEnDu2r7qwLxeXRkcH9CP8CnKsm1P5QOKCtKnVv05Fd67MFpFNiSFQBv7SihhlxMyqHn2zX3NC32Tlzqo4bdwQyLhAQiJ2rQY6wSZhiu3iyfkVYtM3OFCvTd3VnEB7yiwvJ2hlFyMfw2koTPJfqZpsNe4wMCFl-pz7ISxkqXkXtM8KjfVsoFHkPN000wKMoLnxZh6eJico91v-T14oVwrAkfOnKMjDnPx08wcbGjVuWPRTc'
+function HotelSkeleton() {
+  return (
+    <div className={`${styles.hotels} ${styles.skeletonPulse}`}>
+      {[0, 1].map((i) => (
+        <div key={i} className={styles.hotelCard}>
+          <div className={`${styles.hotelImg} ${styles.skeletonBlock}`} />
+          <div className={styles.hotelInfo}>
+            <div className={styles.skeletonBlock} style={{ height: 12, width: '30%', marginBottom: 12 }} />
+            <div className={styles.skeletonBlock} style={{ height: 22, width: '70%', marginBottom: 16 }} />
+            <div className={styles.skeletonBlock} style={{ height: 14, width: '90%', marginBottom: 8 }} />
+            <div className={styles.skeletonBlock} style={{ height: 14, width: '75%', marginBottom: 8 }} />
+            <div className={styles.hotelMeta}>
+              <div className={styles.skeletonBlock} style={{ height: 36, width: 100 }} />
+              <div className={styles.skeletonBlock} style={{ height: 36, width: 100 }} />
+            </div>
+            <div className={styles.skeletonBlock} style={{ height: 44, width: 140, marginTop: 24 }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
-const REGISTRY_ITEMS = [
-  {
-    title: 'The Kitchen Set',
-    subtitle: 'Bespoke Tableware',
-    store: 'Williams Sonoma',
-    url: 'https://www.williams-sonoma.com/registry/',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAzzebFoNBx_oTdE2328zlomqAab5n4e3GyULH2TUIaFGRMU9ELWAZjVO61hgYio7G_lGwgBeSrM8OgloB1iH_XpdTqJVzTxPX7iA9V-gGAzqX1hpnulH6KcsMk77vAv9KWgBWRrVa5h8XXtSfU6FD4o7LTjVIYKNJxqWX-dUbAxPg8yC9_uEY9snRWEtjyi5Rm-9wvZUmx4_6KwYnphdnCquctSKopPvNYbr491IoOKac99isL5rZ5SPgnYWiEkFWNtjerQKGU2d4',
-  },
-  {
-    title: 'Linen & Textures',
-    subtitle: 'Italian Cotton Suite',
-    store: 'Crate & Barrel',
-    url: 'https://www.crateandbarrel.com/gift-registry/',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB_Os94hejCAg6TJ_MwvuwoUIDsHqDi7OAcQx2KvliUhy9smnsvQdAQb-qAXM69UMTFoC8jCGW28o4BSOi8XLRQusg-vi3UkpwUBIFxVis2uxhlXod4cORlWrMwTE3NUVwcTH53eklQ-MOOTyMcw4TQuWEnCZXG2xfvdAnxkzJOelI6AJaa2VYVETtzp5knFKMhJ_7XtNJKqrIJNmaw8QjS8t3Dy05vtgxgzXlfeiKvCeNk8iAH1e3WHCxmJFdyoCUL0iUiBzhjQQw',
-  },
-  {
-    title: 'Home Gallery',
-    subtitle: 'Art & Glassware',
-    store: 'Zola',
-    url: 'https://www.zola.com/registry/',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDiwxnM03kDo2W48rEEj9qv8okUc2aweuiNfPu18SU4y73sKVpZJDymZS4c6AwyZ-4O7vfEXkI5sDI3p5eYDc6j_DyXgV0iQXkbIOc88EcKQiS0rv8fnFd7VHNT92ZVmEZuENAUKiWWsjz-lx6q2180QkMxnkNV9q4yynTiABDh-ibzZOKUeCLwgAhCfs6kxBZxh5GH9aDSs28jcMhfH4VPCshrJJxK7TkOZJE1MJLSL8rbPH_ViaBdVuMrnCf3XR6nu8NFD49O4',
-  },
-]
+function TipsSkeleton() {
+  return (
+    <div className={`${styles.tips} ${styles.skeletonPulse}`}>
+      {[0, 1, 2, 3].map((i) => (
+        <div key={i} className={styles.tip}>
+          <div className={styles.skeletonBlock} style={{ width: 24, height: 24, flexShrink: 0 }} />
+          <div style={{ flex: 1 }}>
+            <div className={styles.skeletonBlock} style={{ height: 12, width: '40%', marginBottom: 10 }} />
+            <div className={styles.skeletonBlock} style={{ height: 14, width: '90%', marginBottom: 6 }} />
+            <div className={styles.skeletonBlock} style={{ height: 14, width: '65%' }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
-const TRAVEL_TIPS = [
-  {
-    icon: 'flight',
-    title: 'Air Travel',
-    body: 'The closest international airport is Portsmith (PHX), approximately 45 minutes from the venue.',
-  },
-  {
-    icon: 'directions_car',
-    title: 'Transport',
-    body: 'We recommend using ride-share apps or renting a car for flexibility during the weekend.',
-  },
-  {
-    icon: 'cloud',
-    title: 'Weather',
-    body: 'Expect crisp autumn weather. Evenings can be cool, ranging from 55°F to 65°F.',
-  },
-  {
-    icon: 'info',
-    title: 'Assistance',
-    body: `For any travel-related questions, please contact our coordinator at ${COUPLE_EMAIL}.`,
-  },
-]
+function RegistrySkeleton() {
+  return (
+    <div className={`${styles.registry} ${styles.skeletonPulse}`} style={{ marginTop: 48 }}>
+      {[0, 1, 2].map((i) => (
+        <div key={i} className={styles.registryCard}>
+          <div className={`${styles.registryImg} ${styles.skeletonBlock}`} />
+          <div className={styles.registryInfo}>
+            <div className={styles.skeletonBlock} style={{ height: 12, width: '35%', marginBottom: 12 }} />
+            <div className={styles.skeletonBlock} style={{ height: 20, width: '65%', marginBottom: 24 }} />
+            <div className={styles.skeletonBlock} style={{ height: 36, width: 120 }} />
+          </div>
+        </div>
+      ))}
+      <div className={`${styles.registryCard} ${styles.skeletonBlock}`} style={{ minHeight: 200 }} />
+    </div>
+  )
+}
 
 export default function TravelRegistry() {
+  const [accommodations, setAccommodations] = useState<AccommodationRow[]>([])
+  const [travelTips, setTravelTips] = useState<TravelTipRow[]>([])
+  const [registryItems, setRegistryItems] = useState<RegistryItemRow[]>([])
+  const [loadingData, setLoadingData] = useState(true)
+  const [fetchError, setFetchError] = useState<string | null>(null)
+
+  const [requestForm, setRequestForm] = useState<RequestForm>({
+    guestName: '',
+    email: '',
+    partySize: 1,
+    accommodationId: '',
+    notes: '',
+  })
+  const [requestLoading, setRequestLoading] = useState(false)
+  const [requestError, setRequestError] = useState<string | null>(null)
+  const [requestSubmitted, setRequestSubmitted] = useState(false)
+
+  useEffect(() => {
+    async function fetchAll() {
+      setLoadingData(true)
+      const [a, t, r] = await Promise.all([
+        supabase.from('accommodations').select('*').eq('is_visible', true).order('sort_order'),
+        supabase.from('travel_tips').select('*').eq('is_visible', true).order('sort_order'),
+        supabase.from('registry_items').select('*').eq('is_visible', true).order('sort_order'),
+      ])
+      if (a.error || t.error || r.error) {
+        setFetchError('Could not load page content. Please refresh.')
+      } else {
+        setAccommodations(a.data)
+        setTravelTips(t.data)
+        setRegistryItems(r.data)
+      }
+      setLoadingData(false)
+    }
+    fetchAll()
+  }, [])
+
+  async function handleRequestSubmit(e: FormEvent) {
+    e.preventDefault()
+    if (!requestForm.guestName.trim() || !requestForm.email.trim()) return
+
+    setRequestLoading(true)
+    setRequestError(null)
+
+    const payload: AccommodationRequestInsert = {
+      guest_name: requestForm.guestName.trim(),
+      email: requestForm.email.trim(),
+      party_size: requestForm.partySize,
+      notes: requestForm.notes.trim() || null,
+      accommodation_id: requestForm.accommodationId || null,
+    }
+
+    const { error: dbError } = await supabase.from('accommodation_requests').insert(payload)
+
+    if (dbError) {
+      setRequestError('Something went wrong. Please try again.')
+      setRequestLoading(false)
+      return
+    }
+
+    try {
+      const preferredHotel = requestForm.accommodationId
+        ? (accommodations.find((a) => a.id === requestForm.accommodationId)?.name ?? 'No preference')
+        : 'No preference'
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          guest_name: requestForm.guestName,
+          guest_email: requestForm.email,
+          party_size: String(requestForm.partySize),
+          accommodation: preferredHotel,
+          notes: requestForm.notes.trim() || 'None',
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+    } catch {
+      // Email failure is silent — DB record is the source of truth
+    }
+
+    setRequestSubmitted(true)
+    setRequestLoading(false)
+  }
+
+  const regularItems = registryItems.filter((i) => !i.is_fund)
+  const fundItem = registryItems.find((i) => i.is_fund)
+
   return (
     <div>
       {/* ── Hero ───────────────────────────────────────────── */}
@@ -67,9 +176,7 @@ export default function TravelRegistry() {
         </div>
         <div className={`container ${styles.heroContent}`}>
           <p className="title-sm">Travel &amp; Accommodations</p>
-          <h1 className={`display-lg ${styles.pageTitle}`}>
-            Stay With Us
-          </h1>
+          <h1 className={`display-lg ${styles.pageTitle}`}>Stay With Us</h1>
         </div>
       </section>
 
@@ -82,105 +189,203 @@ export default function TravelRegistry() {
             comfort, we have secured limited room blocks at our favourite local haunts.
           </p>
 
-          <div className={styles.hotels}>
-            {/* Heritage House */}
-            <div className={styles.hotelCard}>
-              <div className={styles.hotelImg}>
-                <img src={HOTEL_1_IMG} alt="The Heritage House hotel exterior" />
-              </div>
-              <div className={styles.hotelInfo}>
-                <p className="title-sm">Est. 1894</p>
-                <h2 className="headline-md" style={{ marginTop: 8 }}>The Heritage House</h2>
-                <p className="body-lg" style={{ marginTop: 12 }}>
-                  Located in the heart of the historic district, just a five-minute stroll from
-                  the ceremony venue. A blend of classic charm and modern luxury.
-                </p>
-                <div className={styles.hotelMeta}>
-                  <div>
-                    <p className="label-md">Booking Code</p>
-                    <p className="body-lg" style={{ marginTop: 4 }}>{HOTEL_BOOKING_CODE}</p>
+          {fetchError ? (
+            <p className="body-lg" style={{ color: 'var(--tertiary)', marginTop: 32 }}>{fetchError}</p>
+          ) : loadingData ? (
+            <HotelSkeleton />
+          ) : (
+            <div className={styles.hotels}>
+              {accommodations.map((item) => (
+                <div key={item.id} className={styles.hotelCard}>
+                  <div className={styles.hotelImg}>
+                    <img src={item.image_url} alt={item.name} />
                   </div>
-                  <div>
-                    <p className="label-md">Cut-off Date</p>
-                    <p className="body-lg" style={{ marginTop: 4 }}>August 15, 2024</p>
+                  <div className={styles.hotelInfo}>
+                    <p className="title-sm">{item.tagline}</p>
+                    <h2 className="headline-md" style={{ marginTop: 8 }}>{item.name}</h2>
+                    <p className="body-lg" style={{ marginTop: 12 }}>{item.description}</p>
+                    <div className={styles.hotelMeta}>
+                      <div>
+                        <p className="label-md">{item.meta_1_label}</p>
+                        <p className="body-lg" style={{ marginTop: 4 }}>{item.meta_1_value}</p>
+                      </div>
+                      <div>
+                        <p className="label-md">{item.meta_2_label}</p>
+                        <p className="body-lg" style={{ marginTop: 4 }}>{item.meta_2_value}</p>
+                      </div>
+                    </div>
+                    <a
+                      href={item.booking_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={item.cta_variant === 'primary' ? 'btn-primary' : 'btn-ghost'}
+                      style={{ marginTop: 24, display: 'inline-flex' }}
+                    >
+                      {item.cta_text}
+                      <span className="material-icons" aria-hidden="true">arrow_right_alt</span>
+                    </a>
                   </div>
                 </div>
-                <a
-                  href="https://www.marriott.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                  style={{ marginTop: 24, display: 'inline-flex' }}
-                >
-                  Book This Stay
-                  <span className="material-icons" aria-hidden="true">arrow_right_alt</span>
-                </a>
-              </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ── Accommodation Request Form ──────────────────────── */}
+      <section className="section surface-low">
+        <div className="container">
+          <div className={styles.requestSection}>
+            <div className={styles.requestInfo}>
+              <p className="title-sm">Need Help?</p>
+              <h2 className="headline-lg" style={{ marginTop: 12 }}>Request Accommodation</h2>
+              <p className="body-lg" style={{ marginTop: 16 }}>
+                If you need assistance finding accommodation or have questions about the
+                options available, let us know and we will be in touch.
+              </p>
             </div>
 
-            {/* Vellum Suites */}
-            <div className={styles.hotelCard}>
-              <div className={styles.hotelImg}>
-                <img src={HOTEL_2_IMG} alt="Vellum Suites exterior" />
-              </div>
-              <div className={styles.hotelInfo}>
-                <p className="title-sm">Modern Minimal</p>
-                <h2 className="headline-md" style={{ marginTop: 8 }}>Vellum Suites</h2>
-                <p className="body-lg" style={{ marginTop: 12 }}>
-                  For those seeking a contemporary retreat. Vellum offers minimalist interiors
-                  and panoramic views of the valley.
-                </p>
-                <div className={styles.hotelMeta}>
-                  <div>
-                    <p className="label-md">Booking</p>
-                    <p className="body-lg" style={{ marginTop: 4 }}>Click to Access</p>
-                  </div>
-                  <div>
-                    <p className="label-md">Shuttle Service</p>
-                    <p className="body-lg" style={{ marginTop: 4 }}>Available</p>
-                  </div>
+            <div className={styles.requestFormWrap}>
+              {requestSubmitted ? (
+                <div className={styles.requestSuccess}>
+                  <p className="title-sm">Received</p>
+                  <p className="headline-md" style={{ marginTop: 8 }}>
+                    Thank you, {requestForm.guestName}.
+                  </p>
+                  <p className="body-lg" style={{ marginTop: 12 }}>
+                    We will be in touch soon with accommodation details.
+                  </p>
                 </div>
-                <a
-                  href="https://www.hilton.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-ghost"
-                  style={{ marginTop: 24, display: 'inline-flex' }}
-                >
-                  Explore Availability
-                  <span className="material-icons" aria-hidden="true">arrow_right_alt</span>
-                </a>
-              </div>
+              ) : (
+                <form className={styles.requestForm} onSubmit={handleRequestSubmit} noValidate>
+                  <div className={styles.fieldGroup}>
+                    <label htmlFor="guestName" className="input-label">Guest Name</label>
+                    <input
+                      id="guestName"
+                      type="text"
+                      className="input-field"
+                      placeholder="Your full name"
+                      value={requestForm.guestName}
+                      onChange={(e) => setRequestForm({ ...requestForm, guestName: e.target.value })}
+                      required
+                      autoComplete="name"
+                    />
+                  </div>
+
+                  <div className={styles.fieldGroup}>
+                    <label htmlFor="reqEmail" className="input-label">Email Address</label>
+                    <input
+                      id="reqEmail"
+                      type="email"
+                      className="input-field"
+                      placeholder="your@email.com"
+                      value={requestForm.email}
+                      onChange={(e) => setRequestForm({ ...requestForm, email: e.target.value })}
+                      required
+                      autoComplete="email"
+                    />
+                  </div>
+
+                  <div className={styles.fieldGroup}>
+                    <label htmlFor="partySize" className="input-label">Party Size</label>
+                    <input
+                      id="partySize"
+                      type="number"
+                      className="input-field"
+                      min={1}
+                      max={20}
+                      value={requestForm.partySize}
+                      onChange={(e) =>
+                        setRequestForm({ ...requestForm, partySize: Math.max(1, Number(e.target.value)) })
+                      }
+                    />
+                  </div>
+
+                  <div className={styles.fieldGroup}>
+                    <label htmlFor="accommodationPref" className="input-label">Accommodation Preference</label>
+                    <select
+                      id="accommodationPref"
+                      className="input-field"
+                      value={requestForm.accommodationId}
+                      onChange={(e) => setRequestForm({ ...requestForm, accommodationId: e.target.value })}
+                      disabled={loadingData}
+                    >
+                      <option value="">No preference</option>
+                      {accommodations.map((a) => (
+                        <option key={a.id} value={a.id}>{a.name}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className={styles.fieldGroup}>
+                    <label htmlFor="reqNotes" className="input-label">Questions or Notes</label>
+                    <textarea
+                      id="reqNotes"
+                      className="input-field"
+                      rows={4}
+                      placeholder="Any special requirements or questions…"
+                      value={requestForm.notes}
+                      onChange={(e) => setRequestForm({ ...requestForm, notes: e.target.value })}
+                    />
+                  </div>
+
+                  {requestError && (
+                    <p
+                      style={{ color: 'var(--tertiary)', fontFamily: 'var(--font-body)', fontSize: '0.9rem' }}
+                      role="alert"
+                    >
+                      {requestError}
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="btn-primary"
+                    style={{ alignSelf: 'flex-start' }}
+                    disabled={requestLoading}
+                  >
+                    {requestLoading ? 'Sending…' : 'Send Request'}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Travel tips ────────────────────────────────────── */}
-      <section className="section surface-low">
+      <section className="section">
         <div className="container">
           <p className="title-sm">Getting Here</p>
           <h2 className="headline-lg" style={{ marginTop: 12, marginBottom: 48 }}>
             Travel Information
           </h2>
-          <div className={styles.tips}>
-            {TRAVEL_TIPS.map((tip) => (
-              <div key={tip.title} className={styles.tip}>
-                <span className="material-icons" style={{ color: 'var(--secondary)', fontSize: 24 }} aria-hidden="true">
-                  {tip.icon}
-                </span>
-                <div>
-                  <p className="title-sm" style={{ marginBottom: 8 }}>{tip.title}</p>
-                  <p className="body-lg">{tip.body}</p>
+          {loadingData ? (
+            <TipsSkeleton />
+          ) : (
+            <div className={styles.tips}>
+              {travelTips.map((tip) => (
+                <div key={tip.id} className={styles.tip}>
+                  <span
+                    className="material-icons"
+                    style={{ color: 'var(--secondary)', fontSize: 24 }}
+                    aria-hidden="true"
+                  >
+                    {tip.icon}
+                  </span>
+                  <div>
+                    <p className="title-sm" style={{ marginBottom: 8 }}>{tip.title}</p>
+                    <p className="body-lg">{tip.body}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       {/* ── Registry ───────────────────────────────────────── */}
-      <section className="section">
+      <section className="section surface-low">
         <div className="container">
           <p className="title-sm">Registry</p>
           <h2 className="headline-lg" style={{ marginTop: 12 }}>A Curated Collection</h2>
@@ -189,50 +394,54 @@ export default function TravelRegistry() {
             we have selected pieces that will help us build our home and future together.
           </p>
 
-          <div className={styles.registry}>
-            {REGISTRY_ITEMS.map((item) => (
-              <div key={item.title} className={styles.registryCard}>
-                <div className={styles.registryImg}>
-                  <img src={item.img} alt={item.title} />
+          {loadingData ? (
+            <RegistrySkeleton />
+          ) : (
+            <div className={styles.registry}>
+              {regularItems.map((item) => (
+                <div key={item.id} className={styles.registryCard}>
+                  <div className={styles.registryImg}>
+                    <img src={item.image_url ?? ''} alt={item.title} />
+                  </div>
+                  <div className={styles.registryInfo}>
+                    <p className="title-sm">{item.subtitle}</p>
+                    <h3 className="headline-md" style={{ marginTop: 8 }}>{item.title}</h3>
+                    <a
+                      href={item.store_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`btn-ghost ${styles.visitBtn}`}
+                      style={{ marginTop: 24 }}
+                    >
+                      Visit {item.store_name}
+                    </a>
+                  </div>
                 </div>
-                <div className={styles.registryInfo}>
-                  <p className="title-sm">{item.subtitle}</p>
-                  <h3 className="headline-md" style={{ marginTop: 8 }}>{item.title}</h3>
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`btn-ghost ${styles.visitBtn}`}
-                    style={{ marginTop: 24 }}
-                  >
-                    Visit {item.store}
-                  </a>
-                </div>
-              </div>
-            ))}
+              ))}
 
-            {/* Honeymoon Fund */}
-            <div className={`${styles.registryCard} ${styles.fundCard}`}>
-              <div className={styles.registryInfo}>
-                <p className="title-sm">Experiential</p>
-                <h3 className="headline-md" style={{ marginTop: 8 }}>Honeymoon Fund</h3>
-                <p className="body-lg" style={{ marginTop: 16 }}>
-                  If you&apos;d prefer to contribute to our first journey as a married couple,
-                  we have created a fund for our adventures in the Amalfi Coast.
-                </p>
-                <a
-                  href="https://www.zola.com/registry/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                  style={{ marginTop: 24, display: 'inline-flex' }}
-                >
-                  <span className="material-icons" aria-hidden="true">flight</span>
-                  Contribute to Fund
-                </a>
-              </div>
+              {fundItem && (
+                <div className={`${styles.registryCard} ${styles.fundCard}`}>
+                  <div className={styles.registryInfo}>
+                    <p className="title-sm">{fundItem.subtitle}</p>
+                    <h3 className="headline-md" style={{ marginTop: 8 }}>{fundItem.title}</h3>
+                    {fundItem.description && (
+                      <p className="body-lg" style={{ marginTop: 16 }}>{fundItem.description}</p>
+                    )}
+                    <a
+                      href={fundItem.store_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
+                      style={{ marginTop: 24, display: 'inline-flex' }}
+                    >
+                      <span className="material-icons" aria-hidden="true">flight</span>
+                      Contribute to Fund
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
+          )}
         </div>
       </section>
     </div>

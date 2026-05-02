@@ -137,6 +137,58 @@
   justify-content: center;
 }
 
+/* ── Accommodation Request ───────────────────────────── */
+.requestSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.requestInfo {
+  padding-top: 8px;
+}
+
+.requestFormWrap {
+  background: var(--surface-container-lowest);
+}
+
+.requestForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.requestForm textarea.input-field {
+  resize: vertical;
+}
+
+.requestSuccess {
+  padding: clamp(32px, 4vw, 56px);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Skeleton ────────────────────────────────────────── */
+.skeletonBlock {
+  background: var(--surface-container-high);
+  border-radius: 2px;
+}
+
+.skeletonPulse {
+  animation: skeletonFade 1.4s ease-in-out infinite;
+}
+
+@keyframes skeletonFade {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+
 @media (max-width: 1024px) {
   .registry {
     grid-template-columns: repeat(2, 1fr);
@@ -153,6 +205,10 @@
   }
 
   .registry {
+    grid-template-columns: 1fr;
+  }
+
+  .requestSection {
     grid-template-columns: 1fr;
   }
 }
