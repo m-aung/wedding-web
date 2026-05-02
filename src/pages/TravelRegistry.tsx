@@ -98,7 +98,6 @@ export default function TravelRegistry() {
 
   useEffect(() => {
     async function fetchAll() {
-      setLoadingData(true)
       const [a, t, r] = await Promise.all([
         supabase.from('accommodations').select('*').eq('is_visible', true).order('sort_order'),
         supabase.from('travel_tips').select('*').eq('is_visible', true).order('sort_order'),
@@ -266,7 +265,7 @@ export default function TravelRegistry() {
                       className="input-field"
                       placeholder="Your full name"
                       value={requestForm.guestName}
-                      onChange={(e) => setRequestForm({ ...requestForm, guestName: e.target.value })}
+                      onChange={(e) => setRequestForm(prev => ({ ...prev, guestName: e.target.value }))}
                       required
                       autoComplete="name"
                     />
@@ -280,7 +279,7 @@ export default function TravelRegistry() {
                       className="input-field"
                       placeholder="your@email.com"
                       value={requestForm.email}
-                      onChange={(e) => setRequestForm({ ...requestForm, email: e.target.value })}
+                      onChange={(e) => setRequestForm(prev => ({ ...prev, email: e.target.value }))}
                       required
                       autoComplete="email"
                     />
@@ -296,7 +295,7 @@ export default function TravelRegistry() {
                       max={20}
                       value={requestForm.partySize}
                       onChange={(e) =>
-                        setRequestForm({ ...requestForm, partySize: Math.max(1, Number(e.target.value)) })
+                        setRequestForm(prev => ({ ...prev, partySize: Math.max(1, Number(e.target.value)) }))
                       }
                     />
                   </div>
@@ -307,7 +306,7 @@ export default function TravelRegistry() {
                       id="accommodationPref"
                       className="input-field"
                       value={requestForm.accommodationId}
-                      onChange={(e) => setRequestForm({ ...requestForm, accommodationId: e.target.value })}
+                      onChange={(e) => setRequestForm(prev => ({ ...prev, accommodationId: e.target.value }))}
                       disabled={loadingData}
                     >
                       <option value="">No preference</option>
@@ -325,7 +324,7 @@ export default function TravelRegistry() {
                       rows={4}
                       placeholder="Any special requirements or questions…"
                       value={requestForm.notes}
-                      onChange={(e) => setRequestForm({ ...requestForm, notes: e.target.value })}
+                      onChange={(e) => setRequestForm(prev => ({ ...prev, notes: e.target.value }))}
                     />
                   </div>
 
