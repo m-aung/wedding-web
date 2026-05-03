@@ -11,25 +11,34 @@ export type Database = {
         Row: {
           id: string
           full_name: string
+          email: string | null
           attendance: 'yes' | 'no'
           meal_choice: string | null
+          allergies: string | null
           song_request: string | null
+          notes: string | null
           created_at: string
         }
         Insert: {
           id?: string
           full_name: string
+          email?: string | null
           attendance: 'yes' | 'no'
           meal_choice?: string | null
+          allergies?: string | null
           song_request?: string | null
+          notes?: string | null
           created_at?: string
         }
         Update: {
           id?: string
           full_name?: string
+          email?: string | null
           attendance?: 'yes' | 'no'
           meal_choice?: string | null
+          allergies?: string | null
           song_request?: string | null
+          notes?: string | null
           created_at?: string
         }
         Relationships: []

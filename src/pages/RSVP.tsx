@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import emailjs from '@emailjs/browser'
 import styles from './RSVP.module.css'
 import { supabase } from '../lib/supabase'
 import type { RsvpInsert } from '../lib/database.types'
@@ -11,9 +12,12 @@ type AttendanceOption = 'yes' | 'no' | ''
 
 interface RsvpForm {
   fullName: string
+  email: string
   attendance: AttendanceOption
   mealChoice: string
+  allergies: string
   songRequest: string
+  notes: string
 }
 
 const MEAL_OPTIONS = [
@@ -25,9 +29,12 @@ const MEAL_OPTIONS = [
 export default function RSVP() {
   const [form, setForm] = useState<RsvpForm>({
     fullName: '',
+    email: '',
     attendance: '',
     mealChoice: '',
+    allergies: '',
     songRequest: '',
+    notes: '',
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -35,16 +42,19 @@ export default function RSVP() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if (!form.fullName.trim() || !form.attendance) return
+    if (!form.fullName.trim() || !form.attendance || !form.email.trim()) return
 
     setLoading(true)
     setError(null)
 
     const payload: RsvpInsert = {
       full_name: form.fullName.trim(),
+      email: form.email.trim(),
       attendance: form.attendance as 'yes' | 'no',
       meal_choice: form.mealChoice || null,
+      allergies: form.allergies.trim() || null,
       song_request: form.songRequest.trim() || null,
+      notes: form.notes.trim() || null,
     }
 
     const { error: dbError } = await supabase.from('rsvps').insert(payload)
@@ -55,7 +65,28 @@ export default function RSVP() {
       return
     }
 
+    const emailParams = {
+      guest_name: form.fullName,
+      guest_email: form.email,
+      attendance: form.attendance === 'yes' ? 'Accepts with pleasure' : 'Regretfully declines',
+      meal_choice: form.mealChoice || 'Not specified',
+      allergies: form.allergies.trim() || 'None',
+      song_request: form.songRequest.trim() || 'None',
+      notes: form.notes.trim() || 'None',
+      wedding_date: WEDDING.dateLong,
+      wedding_venue: WEDDING.venueDisplay,
+    }
+
+    // Email failure is silent — DB is the source of truth
+    await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_RSVP_GUEST_TEMPLATE_ID,
+      { ...emailParams, to_email: form.email },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+    ).catch(() => {})
+
     setSubmitted(true)
+    setLoading(false)
   }
 
   if (submitted) {
@@ -70,6 +101,9 @@ export default function RSVP() {
           </h1>
           <p className="body-lg" style={{ marginTop: 20 }}>
             Your response has been received, {form.fullName}.
+          </p>
+          <p className="body-lg" style={{ marginTop: 8, color: 'var(--on-surface-variant)' }}>
+            A confirmation has been sent to {form.email}.
           </p>
         </div>
       </section>
@@ -105,8 +139,8 @@ export default function RSVP() {
               Please fill out the form to let us know if you can make it.
             </p>
             <p className="body-lg" style={{ marginTop: 12 }}>
-              Should you have any dietary requirements not listed in the meal choices,
-              please leave a note in the comments section.
+              A confirmation will be sent to your email once your RSVP is received.
+              If you have any questions, please don't hesitate to reach out.
             </p>
           </div>
 
@@ -123,6 +157,21 @@ export default function RSVP() {
                 onChange={(e) => setForm({ ...form, fullName: e.target.value })}
                 required
                 autoComplete="name"
+              />
+            </div>
+
+            {/* Email */}
+            <div className={styles.fieldGroup}>
+              <label htmlFor="email" className="input-label">Email Address</label>
+              <input
+                id="email"
+                type="email"
+                className="input-field"
+                placeholder="your@email.com"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+                autoComplete="email"
               />
             </div>
 
@@ -151,21 +200,38 @@ export default function RSVP() {
               </div>
             </fieldset>
 
-            {/* Meal Choice */}
-            <div className={styles.fieldGroup}>
-              <label htmlFor="mealChoice" className="input-label">Meal Choice</label>
-              <select
-                id="mealChoice"
-                className="input-field"
-                value={form.mealChoice}
-                onChange={(e) => setForm({ ...form, mealChoice: e.target.value })}
-              >
-                <option value="">Select a meal option</option>
-                {MEAL_OPTIONS.map((opt) => (
-                  <option key={opt} value={opt}>{opt}</option>
-                ))}
-              </select>
-            </div>
+            {/* Meal Choice — only when attending */}
+            {form.attendance === 'yes' && (
+              <div className={styles.fieldGroup}>
+                <label htmlFor="mealChoice" className="input-label">Meal Choice</label>
+                <select
+                  id="mealChoice"
+                  className="input-field"
+                  value={form.mealChoice}
+                  onChange={(e) => setForm({ ...form, mealChoice: e.target.value })}
+                >
+                  <option value="">Select a meal option</option>
+                  {MEAL_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            {/* Allergies — only when attending */}
+            {form.attendance === 'yes' && (
+              <div className={styles.fieldGroup}>
+                <label htmlFor="allergies" className="input-label">Allergies &amp; Dietary Restrictions</label>
+                <textarea
+                  id="allergies"
+                  className="input-field"
+                  rows={3}
+                  placeholder="Please list any allergies or dietary requirements…"
+                  value={form.allergies}
+                  onChange={(e) => setForm({ ...form, allergies: e.target.value })}
+                />
+              </div>
+            )}
 
             {/* Song Request */}
             <div className={styles.fieldGroup}>
@@ -177,6 +243,19 @@ export default function RSVP() {
                 placeholder="What song will fill the dance floor?"
                 value={form.songRequest}
                 onChange={(e) => setForm({ ...form, songRequest: e.target.value })}
+              />
+            </div>
+
+            {/* Notes */}
+            <div className={styles.fieldGroup}>
+              <label htmlFor="notes" className="input-label">Notes</label>
+              <textarea
+                id="notes"
+                className="input-field"
+                rows={4}
+                placeholder="Anything else you'd like us to know…"
+                value={form.notes}
+                onChange={(e) => setForm({ ...form, notes: e.target.value })}
               />
             </div>
 
