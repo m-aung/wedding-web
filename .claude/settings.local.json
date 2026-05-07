@@ -4,7 +4,9 @@
       "Bash(npm install *)",
       "Bash(supabase projects *)",
       "Bash(supabase --version)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
