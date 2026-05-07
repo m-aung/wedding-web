@@ -99,14 +99,15 @@ export default function Events() {
         <div className="container">
           <div className={styles.transport}>
             <span className="material-icons" style={{ color: 'var(--secondary)', fontSize: 28 }} aria-hidden="true">
-              directions_bus
+              train
             </span>
             <div>
               <p className="title-sm">Guest Transportation</p>
-              <h2 className="headline-md" style={{ marginTop: 8 }}>Shuttle Service</h2>
+              <h2 className="headline-md" style={{ marginTop: 8 }}>Getting to the Venue</h2>
               <p className="body-lg" style={{ marginTop: 12 }}>
-                Shuttles will depart from The Bedford Post Inn at <strong>3:15 PM</strong> and{' '}
-                <strong>3:30 PM</strong> for guests staying on-site.
+                The nearest LIRR station is a short distance from the venue — we recommend
+                taking an Uber or Lyft from the station. Parking at the venue is limited,
+                so rideshare is highly encouraged.
               </p>
               <div style={{ marginTop: 24 }}>
                 <Link to="/travel-registry" className="btn-ghost">

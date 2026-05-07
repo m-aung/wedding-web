@@ -13,7 +13,6 @@ export type Database = {
           full_name: string
           email: string | null
           attendance: 'yes' | 'no'
-          meal_choice: string | null
           allergies: string | null
           song_request: string | null
           notes: string | null
@@ -24,7 +23,6 @@ export type Database = {
           full_name: string
           email?: string | null
           attendance: 'yes' | 'no'
-          meal_choice?: string | null
           allergies?: string | null
           song_request?: string | null
           notes?: string | null
@@ -35,7 +33,6 @@ export type Database = {
           full_name?: string
           email?: string | null
           attendance?: 'yes' | 'no'
-          meal_choice?: string | null
           allergies?: string | null
           song_request?: string | null
           notes?: string | null
@@ -86,7 +83,12 @@ export type Database = {
       }
     }
     Views: { [_ in never]: never }
-    Functions: { [_ in never]: never }
+    Functions: {
+      validate_rsvp_guest: {
+        Args: { p_name: string; p_email: string }
+        Returns: { on_list: boolean; already_rsvped: boolean }
+      }
+    }
     Enums: { [_ in never]: never }
     CompositeTypes: { [_ in never]: never }
   }

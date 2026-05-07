@@ -14,24 +14,16 @@ interface RsvpForm {
   fullName: string
   email: string
   attendance: AttendanceOption
-  mealChoice: string
   allergies: string
   songRequest: string
   notes: string
 }
-
-const MEAL_OPTIONS = [
-  'Herb-Roasted Chicken',
-  'Pan-Seared Salmon',
-  'Wild Mushroom Risotto (Vegetarian)',
-]
 
 export default function RSVP() {
   const [form, setForm] = useState<RsvpForm>({
     fullName: '',
     email: '',
     attendance: '',
-    mealChoice: '',
     allergies: '',
     songRequest: '',
     notes: '',
@@ -47,11 +39,33 @@ export default function RSVP() {
     setLoading(true)
     setError(null)
 
+    const { data: validation, error: validationError } = await supabase.rpc(
+      'validate_rsvp_guest',
+      { p_name: form.fullName.trim(), p_email: form.email.trim() },
+    )
+
+    if (validationError) {
+      setError('Something went wrong. Please try again or contact us directly.')
+      setLoading(false)
+      return
+    }
+
+    if (!validation.on_list) {
+      setError("We couldn't find your name on our guest list. Please check your name or contact us directly.")
+      setLoading(false)
+      return
+    }
+
+    if (validation.already_rsvped) {
+      setError('We already received an RSVP from this email address. Please contact us if you need to make a change.')
+      setLoading(false)
+      return
+    }
+
     const payload: RsvpInsert = {
       full_name: form.fullName.trim(),
       email: form.email.trim(),
       attendance: form.attendance as 'yes' | 'no',
-      meal_choice: form.mealChoice || null,
       allergies: form.allergies.trim() || null,
       song_request: form.songRequest.trim() || null,
       notes: form.notes.trim() || null,
@@ -69,7 +83,6 @@ export default function RSVP() {
       guest_name: form.fullName,
       guest_email: form.email,
       attendance: form.attendance === 'yes' ? 'Accepts with pleasure' : 'Regretfully declines',
-      meal_choice: form.mealChoice || 'Not specified',
       allergies: form.allergies.trim() || 'None',
       song_request: form.songRequest.trim() || 'None',
       notes: form.notes.trim() || 'None',
@@ -200,51 +213,34 @@ export default function RSVP() {
               </div>
             </fieldset>
 
-            {/* Meal Choice — only when attending */}
+            {/* Allergies & Song Request — only when attending */}
             {form.attendance === 'yes' && (
-              <div className={styles.fieldGroup}>
-                <label htmlFor="mealChoice" className="input-label">Meal Choice</label>
-                <select
-                  id="mealChoice"
-                  className="input-field"
-                  value={form.mealChoice}
-                  onChange={(e) => setForm({ ...form, mealChoice: e.target.value })}
-                >
-                  <option value="">Select a meal option</option>
-                  {MEAL_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
-              </div>
-            )}
+              <>
+                <div className={styles.fieldGroup}>
+                  <label htmlFor="allergies" className="input-label">Allergies &amp; Dietary Restrictions</label>
+                  <textarea
+                    id="allergies"
+                    className="input-field"
+                    rows={3}
+                    placeholder="Please list any allergies or dietary requirements…"
+                    value={form.allergies}
+                    onChange={(e) => setForm({ ...form, allergies: e.target.value })}
+                  />
+                </div>
 
-            {/* Allergies — only when attending */}
-            {form.attendance === 'yes' && (
-              <div className={styles.fieldGroup}>
-                <label htmlFor="allergies" className="input-label">Allergies &amp; Dietary Restrictions</label>
-                <textarea
-                  id="allergies"
-                  className="input-field"
-                  rows={3}
-                  placeholder="Please list any allergies or dietary requirements…"
-                  value={form.allergies}
-                  onChange={(e) => setForm({ ...form, allergies: e.target.value })}
-                />
-              </div>
+                <div className={styles.fieldGroup}>
+                  <label htmlFor="songRequest" className="input-label">Song Request</label>
+                  <input
+                    id="songRequest"
+                    type="text"
+                    className="input-field"
+                    placeholder="What song will fill the dance floor?"
+                    value={form.songRequest}
+                    onChange={(e) => setForm({ ...form, songRequest: e.target.value })}
+                  />
+                </div>
+              </>
             )}
-
-            {/* Song Request */}
-            <div className={styles.fieldGroup}>
-              <label htmlFor="songRequest" className="input-label">Song Request</label>
-              <input
-                id="songRequest"
-                type="text"
-                className="input-field"
-                placeholder="What song will fill the dance floor?"
-                value={form.songRequest}
-                onChange={(e) => setForm({ ...form, songRequest: e.target.value })}
-              />
-            </div>
 
             {/* Notes */}
             <div className={styles.fieldGroup}>
