@@ -3,7 +3,7 @@ import styles from './Events.module.css'
 import { WEDDING } from '../constants/couple'
 
 const EVENTS_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBF7rLFfHOiwncN7103azNWkQUqNrPakOpqwmX76LrC41cX2aFfm778WLs_vDgoynr4f99EzRyqweCcUoDLHRZOr1qOcQMcjiNy4KaFmf8zh69GUpG7qnRBSbXg9tBfuzVa9hZdvesTP3Cf2imBG1j_URAOAFaRM7qtZMMNyfa3CJQlb6voWzxl7Px9hsv2yVobIpiOnDNKh02drueV4a_ZWh4Oxh0c0MHe0i_Xu8_uWQagC9QlGmqwjWOIHC16mkVahO3vRq3Tjm8'
+  'https://imagedelivery.net/fdRzTEFWXF8OEw2d6zGmjg/e4847f45-5abe-4630-8875-8d4a41a74b00/public'
 
 interface Event {
   time: string

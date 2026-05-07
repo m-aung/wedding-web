@@ -35,15 +35,14 @@ And in 2025, everything led to one unforgettable moment—a question, a pause, a
   {
     id: 'begins',
     label: 'Chapter Three — Forever Begins',
-    place: '2026',
+    place: '2025',
     body: `Now, we begin our next chapter.
 
 From friendship… to love… to a lifetime together.
 
-In 2026, we say "I do"—and start the most beautiful part of our story yet.`,
+In 2025, we say "I do"—and start the most beautiful part of our story yet.`,
     image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCoyzohjKnJuBe6GyjkkVD96aGPgDS0qVcBTx5FjmJqYi-L1i1lkQsLLGFSRhWj9QoNDSne0Qzlk1kSulbanRKK8PDRFOvddPiZPbBcnwAN3t6dkXMdApfpAB_KTf3zI5Y7mfcrfzZoKt26SM8BjNY0_tyqdLVloQVDK0tMW0X6BkGNS0izEnlBVG-piJAw-sGl5LY21DRGasF-bDTXhp8XTwTJQ_1gBy0W7IdN4-V_Acfq5PLe9Y9xVNvIyUA7zbYZ9XaMkL9-9mc',
-    imgAlt: 'The beginning of forever',
+      'https://imagedelivery.net/fdRzTEFWXF8OEw2d6zGmjg/90439cc0-f3f3-406a-4bf0-87907cb30700/public',
     imageRight: false,
   },
 ]
