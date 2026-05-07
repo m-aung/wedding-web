@@ -73,6 +73,14 @@
   color: #8f8b87;
 }
 
+.version {
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: rgba(143, 139, 135, 0.55);
+}
+
 .lace {
   height: 140px;
   /* background-image: url('https://imagedelivery.net/fdRzTEFWXF8OEw2d6zGmjg/eddc8c21-f10f-4c67-4673-ee6402555400/public'); */

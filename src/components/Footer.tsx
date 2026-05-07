@@ -13,6 +13,7 @@ export default function Footer() {
           <p className={styles.brand}>{monogram}</p>
           <div className={styles.rule} />
           <p className={styles.copy}>{t('common.weddingDateShort')}</p>
+          <p className={styles.version}>v{__APP_VERSION__}</p>
         </div>
       </div>
       <div className={styles.lace} aria-hidden="true" />
