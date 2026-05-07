@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(supabase projects *)",
+      "Bash(supabase --version)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

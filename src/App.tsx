@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
+import { I18nextProvider } from 'react-i18next'
+import i18n from './i18n/config'
 import Navbar from './components/Navbar'
 import SiteMasthead from './components/SiteMasthead'
 import Footer from './components/Footer'
@@ -12,21 +14,23 @@ import QAndA from './pages/QAndA'
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <main className="lace-site">
-        <SiteMasthead />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/our-story" element={<OurStory />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/dress-code" element={<DressCode />} />
-          <Route path="/q-and-a" element={<QAndA />} />
-          <Route path="/rsvp" element={<RSVP />} />
-          <Route path="/travel-registry" element={<TravelRegistry />} />
-        </Routes>
-      <Footer />
-      </main>
-    </>
+    <I18nextProvider i18n={i18n}>
+      <>
+        <Navbar />
+        <main className="lace-site">
+          <SiteMasthead />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/our-story" element={<OurStory />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/dress-code" element={<DressCode />} />
+            <Route path="/q-and-a" element={<QAndA />} />
+            <Route path="/rsvp" element={<RSVP />} />
+            <Route path="/travel-registry" element={<TravelRegistry />} />
+          </Routes>
+        <Footer />
+        </main>
+      </>
+    </I18nextProvider>
   )
 }

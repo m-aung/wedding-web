@@ -1,0 +1,201 @@
+{
+  "nav": {
+    "home": "Home",
+    "ourStory": "Our Story",
+    "events": "Events",
+    "dressCode": "Dress Code",
+    "qAndA": "Q&A",
+    "rsvp": "RSVP",
+    "travelRegistry": "Travel & Registry"
+  },
+  "common": {
+    "openVenueMap": "Open Venue Map",
+    "viewMore": "View More",
+    "viewEvents": "View Events",
+    "viewQAndA": "View Q&A",
+    "coupleName": "Myo & Yoon",
+    "weddingDate": "Saturday, September 19, 2026",
+    "weddingDateShort": "9.19.2026",
+    "weddingTime": "4:00 PM",
+    "venueName": "9 Fire Place",
+    "venueCity": "New York",
+    "venueDisplay": "9 Fire Place, New York",
+    "venueAddress": "9 Fire Place Neck Road, Brookhaven, New York 11719",
+    "welcomeMessage": "We invite you to join us for an evening of celebration"
+  },
+  "home": {
+    "weddingDay": "Wedding Day",
+    "quickLinks": "Quick Links"
+  },
+  "ourStory": {
+    "pageTitle": "Our Story",
+    "subtitle": "Nearly two decades in the making",
+    "intro": "From university friends to lifelong partners—a love story that began in 2007 and never stopped growing.",
+    "chapterOne": {
+      "label": "Chapter One — Where It All Began",
+      "date": "2007–2012",
+      "body": "Before forever, there was friendship—and then, love.\n\nWe met at the same university in 2007, sharing classrooms, laughter, and the simple joy of growing up side by side. What began as friendship soon turned into something more, and in 2008, we started our journey together.\n\nThose university years—from 2008 to 2012—were filled with memories that shaped us, where love grew naturally, quietly, and beautifully.\n\nWe didn't know it then, but we were already building something that would last a lifetime."
+    },
+    "chapterTwo": {
+      "label": "Chapter Two — From Us to Forever",
+      "date": "2012–2025",
+      "body": "What started as friendship slowly turned into something deeper.\n\nThrough the years, life changed—but one thing didn't: us. We grew, supported each other, and built a bond that only became stronger with time.\n\nAnd in 2025, everything led to one unforgettable moment—a question, a pause, and a \"yes\" that meant forever."
+    },
+    "chapterThree": {
+      "label": "Chapter Three — Forever Begins",
+      "date": "2025",
+      "body": "Now, we begin our next chapter.\n\nFrom friendship… to love… to a lifetime together.\n\nIn 2025, we say \"I do\"—and start the most beautiful part of our story yet."
+    },
+    "ctaNext": "Next",
+    "ctaTitle": "The Celebration Details"
+  },
+  "events": {
+    "pageTitle": "The Wedding Festivities",
+    "subtitle": "The Wedding Festivities",
+    "intro": "We invite you to join us for an evening of celebration, starting with our exchange of vows followed by dinner and dancing under the stars.",
+    "venueSection": "Venue",
+    "venueDescription": "All festivities are held at one location:",
+    "timeline": "Event Timeline",
+    "ceremony": {
+      "time": "3:00 PM",
+      "title": "The Ceremony",
+      "detail": "Please be seated by 2:45 PM. The ceremony will begin promptly at 3:00 PM."
+    },
+    "cocktail": {
+      "time": "5:00 PM",
+      "title": "Cocktail Hour",
+      "detail": "Enjoy hors d'oeuvres, signature cocktails, and time to mingle after the ceremony.",
+      "note": "Bar service includes beer, wine, and house cocktails."
+    },
+    "reception": {
+      "time": "6:00 PM",
+      "title": "The Reception",
+      "detail": "Dinner service begins at 6:30 PM, followed by toasts and dancing into the evening.",
+      "note": "Black tie requested."
+    },
+    "transport": "Guest Transportation",
+    "transportTitle": "Shuttle Service",
+    "transportDetail": "Shuttles will depart from The Bedford Post Inn at {{time1}} and {{time2}} for guests staying on-site.",
+    "moreTravel": "More Travel Info"
+  },
+  "dressCode": {
+    "pageTitle": "Dress Code",
+    "subtitle": "Style Guide",
+    "intro": "Your presence matters most, and your elegant attire will make the celebration even more beautiful.",
+    "dressy": {
+      "title": "Dressy Elegance",
+      "body": "Guests are encouraged to wear polished outfits - suits or blazers with dress pants for men (no tie, please), and either long or short dresses for women. \n Please avoid overly casual outfits such as jeans or sneakers, as we want everyone to feel special and celebration-ready. We can't wait to see your stylish looks!"
+    },
+    "outdoor": {
+      "title": "Outdoor Setting",
+      "body": "Since our wedding will be held outdoors on grass, we recommend wearing comfortable shoes suitable for walking on grass. Please also bring a light layer for the evening, as it may get cooler. We can't wait to celebrate with you in our beautiful outdoor setting!"
+    },
+    "colors": {
+      "title": "Color Palette",
+      "body": "Our color palette is soft and timeless, featuring neutral tones, soft pastels and muted colors. We encourage guests to choose outfits in these shades to complement the overall aesthetic of our wedding. Please avoid wearing all white, white with black pants, and peach or salmon tones, as these colors are reserved for the wedding party. We can't wait to see your elegant and stylish outfits that will perfectly complement our wedding theme!"
+    },
+    "ctaNext": "Next",
+    "ctaTitle": "Questions Before the Day?"
+  },
+  "qAndA": {
+    "pageTitle": "Q&A",
+    "subtitle": "Helpful Details",
+    "intro": "A few helpful answers to make your experience easy, joyful, and stress-free.",
+    "faqs": [
+      {
+        "question": "What Time Should I Arrive?",
+        "answer": "Please plan to arrive by 3:00 PM to allow time to find parking and get settled before the ceremony begins at 4:00 PM."
+      },
+      {
+        "question": "Is Parking Available at the Venue?",
+        "answer": "Parking is very limited. Please use nearby street parking. Kindly do not park on the grass. Carpooling is encouraged!"
+      },
+      {
+        "question": "Do you have a gift registry?",
+        "answer": "Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with a gift, we prefer monetary gift. Thank you for your generosity and love!"
+      },
+      {
+        "question": "Will ceremony start on time?",
+        "answer": "Yes, the ceremony will begin promptly at 4:00 PM. We recommend arriving by 3:00 PM to allow time for parking and finding your seat. We can't wait to celebrate with you!"
+      },
+      {
+        "question": "Is the wedding outdoors?",
+        "answer": "Yes, our wedding will be held outdoors on grass. We recommend wearing comfortable shoes suitable for walking on grass. Please also bring a light layer for the evening. We can't wait to celebrate with you in our beautiful outdoor setting!"
+      },
+      {
+        "question": "Can I take Photos During the ceremony?",
+        "answer": "We kindly ask that you refrain from taking photos during the ceremony. We have hired a professional photographer to capture every special moment, and we want everyone to be fully present and engaged in the experience. We will share the photos with you after the wedding so you can relive the memories!"
+      },
+      {
+        "question": "Will there be food and drinks?",
+        "answer": "Yes, we will have a delicious buffet-style dinner with a variety of options to accommodate different dietary preferences. We will also have a selection of beverages, including alcoholic and non-alcoholic options, to keep you refreshed throughout the celebration. We can't wait to share this meal with you!"
+      },
+      {
+        "question": "What time will the celebration end?",
+        "answer": "The celebration will officially end around 7:00 - 8:00 PM. However, we encourage everyone to stay and enjoy the festivities as long as they like! We will have music, dancing, and plenty of fun to keep the party going. We can't wait to celebrate with you until the very end!"
+      },
+      {
+        "question": "Allergies or dietary restrictions?",
+        "answer": "We can accommodate most dietary restrictions and allergies - please note any allergies or preferences (gluten-free, vegetarian, nuts, shellfish, etc.) on the RSVP form or contact us directly. Our caterer will label dishes accordingly. For severe allergies or medically necessary accommodations email us directly at myoandyoon@gmail.com so we can confirm safe options."
+      }
+    ]
+  },
+  "rsvp": {
+    "pageTitle": "The Pleasure of Your Company",
+    "deadline": "Kindly respond by September First",
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "attendance": "Will you attend?",
+      "attendanceYes": "Accepts with pleasure",
+      "attendanceNo": "Regretfully declines",
+      "allergies": "Allergies & Dietary Restrictions",
+      "songRequest": "Favorite Song Request",
+      "songRequestPlaceholder": "Share your favorite song",
+      "notes": "Additional Notes",
+      "notesPlaceholder": "Anything else we should know?",
+      "submit": "Submit RSVP"
+    },
+    "formInfo": {
+      "title": "Location & Time",
+      "description1": "We are so excited to celebrate our special day with the people we love most. Please fill out the form to let us know if you can make it.",
+      "description2": "A confirmation will be sent to your email once your RSVP is received. If you have any questions, please don't hesitate to reach out."
+    },
+    "success": {
+      "heading": "Thank you",
+      "attending": "We cannot wait to celebrate with you.",
+      "notAttending": "We will miss you dearly.",
+      "message": "Your response has been received, {{name}}.",
+      "confirmation": "A confirmation has been sent to {{email}}."
+    },
+    "errors": {
+      "generic": "Something went wrong. Please try again or contact us directly."
+    }
+  },
+  "travel": {
+    "pageTitle": "Travel Information",
+    "subtitle": "Getting Here",
+    "travelGuide": "How to Arrive",
+    "venueGuide": "Getting to the Venue",
+    "tips": [
+      {
+        "title": "LIRR & Rideshare",
+        "body": "The nearest LIRR station is located a short distance from the venue. Guests may take an Uber or Lyft from the station for convenience."
+      },
+      {
+        "title": "Parking",
+        "body": "Due to limited parking at the venue, rideshare is highly encouraged. If you choose to drive, please arrive early and allow extra time for parking. If the parking area is full, kindly use nearby street parking and do not park on the grass."
+      },
+      {
+        "title": "Carpool",
+        "body": "If you have any difficulty taking the LIRR, feel free to let us know—we will try to assist with coordinating a carpool if possible."
+      }
+    ],
+    "registry": "Registry",
+    "registryTitle": "A Curated Collection",
+    "registryIntro": "Your presence is the greatest gift of all. If you wish to honor us with a gift, we have selected pieces that will help us build our home and future together.",
+    "contributeFund": "Contribute to Fund"
+  }
+}

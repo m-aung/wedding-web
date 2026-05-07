@@ -109,6 +109,36 @@
   color: var(--on-surface);
 }
 
+/* ── Language toggle button ── */
+.languageToggle {
+  display: none;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid rgba(47, 51, 51, 0.12);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--on-surface-variant);
+  transition: all 200ms ease;
+  padding: 0;
+  margin-right: 8px;
+}
+
+.languageToggle:hover {
+  background: rgba(47, 51, 51, 0.04);
+  color: var(--on-surface);
+  border-color: rgba(47, 51, 51, 0.2);
+}
+
+.languageToggle:active {
+  background: rgba(47, 51, 51, 0.08);
+}
+
 /* ── Hamburger button ── */
 .hamburger {
   display: none;
@@ -184,6 +214,16 @@
 
   .desktopNav {
     display: none;
+  }
+
+  .languageToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .hamburger {

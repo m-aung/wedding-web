@@ -1,23 +1,30 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import styles from './Navbar.module.css'
 import { BRIDE, COUPLE_DISPLAY, GROOM } from '../constants/couple'
 
-const navLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/our-story', label: 'Our Story' },
-  { to: '/events', label: 'Events' },
-  { to: '/dress-code', label: 'Dress Code' },
-  { to: '/q-and-a', label: 'Q&A' },
-  { to: '/rsvp', label: 'RSVP' },
-  { to: '/travel-registry', label: 'Travel & Registry' },
-]
-
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const { t, i18n } = useTranslation()
   const monogram = `${GROOM.nickname.charAt(0)}&${BRIDE.nickname.charAt(0)}`
 
+  const navLinks = [
+    { to: '/', label: t('nav.home') },
+    { to: '/our-story', label: t('nav.ourStory') },
+    { to: '/events', label: t('nav.events') },
+    { to: '/dress-code', label: t('nav.dressCode') },
+    { to: '/q-and-a', label: t('nav.qAndA') },
+    { to: '/rsvp', label: t('nav.rsvp') },
+    { to: '/travel-registry', label: t('nav.travelRegistry') },
+  ]
+
   const close = () => setOpen(false)
+
+  const toggleLanguage = () => {
+    const newLanguage = i18n.language === 'en' ? 'my' : 'en'
+    i18n.changeLanguage(newLanguage)
+  }
 
   return (
     <header className={styles.header}>
@@ -27,7 +34,15 @@ export default function Navbar() {
           <span className={styles.logoMonogram}>{monogram}</span>
         </NavLink>
 
-
+        {/* Language switcher */}
+        <button
+          onClick={toggleLanguage}
+          className={styles.languageToggle}
+          aria-label={`Switch to ${i18n.language === 'en' ? 'Burmese' : 'English'}`}
+          title={`${i18n.language === 'en' ? 'မြန်မာ' : 'English'}`}
+        >
+          {i18n.language === 'en' ? 'မြန်မာ' : 'EN'}
+        </button>
 
         {/* Hamburger button (mobile only) */}
         <button

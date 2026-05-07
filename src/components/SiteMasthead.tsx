@@ -1,27 +1,46 @@
 import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import styles from './SiteMasthead.module.css'
 import { BRIDE, GROOM, WEDDING } from '../constants/couple'
 
-const navLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/our-story', label: 'Our Story' },
-  { to: '/events', label: 'Events' },
-  { to: '/dress-code', label: 'Dress Code' },
-  { to: '/q-and-a', label: 'Q&A' },
-  { to: '/rsvp', label: 'RSVP' },
-  { to: '/travel-registry', label: 'Travel & Registry' },
-]
-
 export default function SiteMasthead() {
+  const { t, i18n } = useTranslation()
+
+  const navLinks = [
+    { to: '/', label: t('nav.home') },
+    { to: '/our-story', label: t('nav.ourStory') },
+    { to: '/events', label: t('nav.events') },
+    { to: '/dress-code', label: t('nav.dressCode') },
+    { to: '/q-and-a', label: t('nav.qAndA') },
+    { to: '/rsvp', label: t('nav.rsvp') },
+    { to: '/travel-registry', label: t('nav.travelRegistry') },
+  ]
+
   const daysToGo = Math.max(
     0,
     Math.ceil((new Date(WEDDING.date).getTime() - Date.now()) / (1000 * 60 * 60 * 24)),
   )
 
+  const toggleLanguage = () => {
+    const newLanguage = i18n.language === 'en' ? 'my' : 'en'
+    void i18n.changeLanguage(newLanguage)
+  }
+
   return (
     <section className={styles.wrapper} aria-label="Site masthead">
       <div className="container">
         <div className={styles.content}>
+          <div className={styles.toolbar}>
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className={styles.languageToggle}
+              aria-label={`Switch to ${i18n.language === 'en' ? 'Burmese' : 'English'}`}
+              title={i18n.language === 'en' ? 'မြန်မာ' : 'English'}
+            >
+              {i18n.language === 'en' ? 'မြန်မာ' : 'EN'}
+            </button>
+          </div>
           <p className="title-sm">The Union of</p>
           <h1 className={`display-lg ${styles.title}`}>
             {GROOM.nickname}<span className={styles.amp}>&amp;</span>{BRIDE.nickname}
