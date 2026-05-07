@@ -12,6 +12,27 @@ npm run preview   # Preview production build locally
 
 No test suite is configured. Type-checking is the primary correctness check.
 
+## Releasing a new version
+
+This project uses [Changesets](https://github.com/changesets/changesets) for changelog management.
+
+1. **After making changes**, create a changeset describing what changed:
+   ```bash
+   npm run changeset
+   ```
+   This opens an interactive prompt — pick the bump type (major/minor/patch) and write a human-readable summary. A `.changeset/*.md` file is created; commit it alongside the code.
+
+2. **When ready to release**, bump the version and update `CHANGELOG.md`:
+   ```bash
+   npm run version
+   ```
+   This consumes all pending changeset files and writes entries to `CHANGELOG.md`. Review, then commit.
+
+3. **Tag the release**:
+   ```bash
+   git tag v<version> && git push --follow-tags
+   ```
+
 ## Architecture
 
 React 18 + TypeScript SPA built with Vite. React Router v6 handles client-side routing. Supabase is the only backend (RSVP form submissions).

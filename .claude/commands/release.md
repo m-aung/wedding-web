@@ -1,15 +1,25 @@
 # Release
 
-Cut a new semver release for this project using `standard-version`.
+Cut a new semver release using Changesets.
 
 ## Steps
 
 1. Check `git status` — abort if there are uncommitted changes and tell the user to commit or stash them first.
-2. Show recent commits since the last tag (`git log $(git describe --tags --abbrev=0)..HEAD --oneline`) so the user can preview what will be included.
-3. Determine the bump type:
-   - If the user passed an argument (`$ARGUMENTS`), use it as the release type: `patch`, `minor`, or `major`.
-   - Otherwise, infer from the commit log: `feat:` → minor, `fix:` → patch, `BREAKING CHANGE` or `!:` → major. Default to patch if unclear.
-4. Run the appropriate release script:
-   - `npm run release:patch` / `npm run release:minor` / `npm run release:major`
-5. Show the new version number and the relevant section of `CHANGELOG.md` that was generated.
-6. Ask the user: "Push this release to origin? (git push --follow-tags)" and only push if they confirm.
+
+2. Check for pending changesets: list `.changeset/*.md` excluding `README.md` and `config.json`. If none exist, warn the user that the release will not update `CHANGELOG.md` (no changesets to consume), and ask whether to proceed anyway.
+
+3. Run `npm run version` — this consumes all pending changeset files, bumps `package.json`, and writes the new section in `CHANGELOG.md`.
+
+4. Show the user:
+   - The new version from `package.json`
+   - The relevant new section at the top of `CHANGELOG.md`
+
+5. Stage and commit the version bump:
+   ```
+   git add package.json CHANGELOG.md
+   git commit -m "chore: release v<new-version>"
+   ```
+
+6. Tag the release: `git tag v<new-version>`
+
+7. Ask the user: "Push this release to origin? (`git push --follow-tags`)" and only push if they confirm.
