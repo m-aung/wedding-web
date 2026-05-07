@@ -14,9 +14,9 @@ Cut a new semver release using Changesets.
    - The new version from `package.json`
    - The relevant new section at the top of `CHANGELOG.md`
 
-5. Stage and commit the version bump:
+5. Stage and commit the version bump (including the deleted changeset files):
    ```
-   git add package.json CHANGELOG.md
+   git add package.json CHANGELOG.md .changeset/
    git commit -m "chore: release v<new-version>"
    ```
 
