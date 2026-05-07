@@ -82,6 +82,39 @@ export default function TravelRegistry() {
         </div>
       </section>
 
+      {/* ── Parking & Directions ───────────────────────────── */}
+      <section className="section surface-low">
+        <div className="container">
+          <p className="title-sm">{t('travel.parkingLabel')}</p>
+          <h2 className="headline-lg" style={{ marginTop: 12, marginBottom: 48 }}>
+            {t('travel.parkingTitle')}
+          </h2>
+          <div className={styles.parkingGrid}>
+            <div className={styles.parkingMap}>
+              <iframe
+                title="Venue location"
+                src={`https://www.google.com/maps?q=${encodeURIComponent('9 Fire Place Neck Road, Brookhaven, NY 11719')}&output=embed&z=15`}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <div className={styles.parkingImg}>
+              <img
+                src="https://placehold.co/800x500/e8e0db/8d7c6e?text=Parking+Map+(placeholder)"
+                alt="Parking map placeholder"
+              />
+              <p className={`body-lg ${styles.parkingCaption}`}>
+                {t('travel.parkingCaption')}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Registry ───────────────────────────────────────── */}
       {!loadingData && !fetchError && registryItems.length > 0 && (
         <section className="section surface-low">
