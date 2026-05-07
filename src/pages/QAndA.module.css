@@ -7,6 +7,12 @@
   line-height: 1;
 }
 
+:global(:lang(my)) .pageTitle {
+  line-height: 1.6;
+  letter-spacing: 0;
+  margin-top: 16px;
+}
+
 .list {
   display: flex;
   flex-direction: column;

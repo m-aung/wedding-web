@@ -136,6 +136,28 @@ footer {
   color: var(--on-surface-variant);
 }
 
+/* ─── Burmese script adjustments ────────────────────────────── */
+/* Myanmar glyphs stack above/below the baseline and need more vertical room */
+:lang(my) .display-lg,
+:lang(my) .display-md {
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+:lang(my) .headline-lg,
+:lang(my) .headline-md {
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+:lang(my) .title-sm {
+  letter-spacing: 0.04em;
+}
+
+:lang(my) .label-md {
+  letter-spacing: 0.04em;
+}
+
 /* ─── Buttons ────────────────────────────────────────────────── */
 .btn-primary {
   display: inline-flex;

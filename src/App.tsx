@@ -1,13 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
-import { I18nextProvider } from 'react-i18next'
+import { I18nextProvider, useTranslation } from 'react-i18next'
 import i18n from './i18n/config'
-
-function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
-  return null
-}
 import Navbar from './components/Navbar'
 import SiteMasthead from './components/SiteMasthead'
 import Footer from './components/Footer'
@@ -19,11 +13,26 @@ import TravelRegistry from './pages/TravelRegistry'
 import DressCode from './pages/DressCode'
 import QAndA from './pages/QAndA'
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
+
+function SyncLang() {
+  const { i18n: i18nInstance } = useTranslation()
+  useEffect(() => {
+    document.documentElement.lang = i18nInstance.language
+  }, [i18nInstance.language])
+  return null
+}
+
 export default function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <>
         <ScrollToTop />
+        <SyncLang />
         <Navbar />
         <main className="lace-site">
           <SiteMasthead />

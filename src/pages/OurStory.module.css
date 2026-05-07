@@ -6,6 +6,12 @@
   letter-spacing: 0.01em;
 }
 
+:global(:lang(my)) .pageTitle {
+  line-height: 1.6;
+  letter-spacing: 0;
+  margin-top: 20px;
+}
+
 .chapter + .chapter {
   background: var(--surface-container-low);
 }
