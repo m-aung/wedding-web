@@ -20,15 +20,25 @@
   filter: brightness(0.55);
 }
 
+.heroImg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.15) 100%);
+  pointer-events: none;
+}
+
 .heroContent {
   position: relative;
   padding-bottom: clamp(48px, 8vh, 96px);
   padding-top: 120px;
   color: #faf7f6;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8), 0 2px 24px rgba(0, 0, 0, 0.5);
 }
 
-.heroContent .title-sm {
-  color: rgba(250, 247, 246, 0.7);
+.heroContent :global(.title-sm),
+.heroContent :global(.body-lg) {
+  color: #ffffff !important;
 }
 
 .pageTitle {

@@ -38,8 +38,8 @@
   --outline:                     #777c7b;
   --outline-variant:             #aeb3b2;
 
-  --font-display:                'Newsreader', Georgia, serif;
-  --font-body:                   'Work Sans', system-ui, sans-serif;
+  --font-display:                'Newsreader', 'Noto Sans Myanmar', Georgia, serif;
+  --font-body:                   'Work Sans', 'Noto Sans Myanmar', system-ui, sans-serif;
   --lace:                        rgba(166, 142, 116, 0.18);
   --lace-strong:                 rgba(112, 91, 68, 0.28);
   --lace-glow:                   rgba(112, 91, 68, 0.08);
