@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styles from './DressCode.module.css'
+import ColorPalette from '../components/ColorPalette'
 
 export default function DressCode() {
   const { t } = useTranslation()
@@ -40,6 +41,16 @@ export default function DressCode() {
       </section>
 
       <section className="section">
+        <div className="container" style={{ textAlign: 'center' }}>
+          <p className="title-sm">{t('dressCode.paletteSection')}</p>
+          <h2 className="headline-lg" style={{ marginTop: 12, marginBottom: 48 }}>
+            {t('dressCode.paletteHeading')}
+          </h2>
+          <ColorPalette />
+        </div>
+      </section>
+
+      <section className="section surface-low">
         <div className="container" style={{ textAlign: 'center' }}>
           <p className="title-sm">{t('dressCode.ctaNext')}</p>
           <h2 className="headline-lg" style={{ marginTop: 12 }}>
