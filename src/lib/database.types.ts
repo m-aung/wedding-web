@@ -43,88 +43,6 @@ export type Database = {
         }
         Relationships: []
       }
-      accommodations: {
-        Row: {
-          id: string
-          sort_order: number
-          is_visible: boolean
-          created_at: string
-          tagline: string
-          name: string
-          description: string
-          image_url: string
-          booking_url: string
-          meta_1_label: string
-          meta_1_value: string
-          meta_2_label: string
-          meta_2_value: string
-          cta_text: string
-          cta_variant: 'primary' | 'ghost'
-        }
-        Insert: {
-          id?: string
-          sort_order?: number
-          is_visible?: boolean
-          created_at?: string
-          tagline: string
-          name: string
-          description: string
-          image_url: string
-          booking_url: string
-          meta_1_label: string
-          meta_1_value: string
-          meta_2_label: string
-          meta_2_value: string
-          cta_text?: string
-          cta_variant?: 'primary' | 'ghost'
-        }
-        Update: {
-          id?: string
-          sort_order?: number
-          is_visible?: boolean
-          tagline?: string
-          name?: string
-          description?: string
-          image_url?: string
-          booking_url?: string
-          meta_1_label?: string
-          meta_1_value?: string
-          meta_2_label?: string
-          meta_2_value?: string
-          cta_text?: string
-          cta_variant?: 'primary' | 'ghost'
-        }
-        Relationships: []
-      }
-      accommodation_requests: {
-        Row: {
-          id: string
-          created_at: string
-          guest_name: string
-          email: string
-          party_size: number
-          notes: string | null
-          accommodation_id: string | null
-        }
-        Insert: {
-          id?: string
-          created_at?: string
-          guest_name: string
-          email: string
-          party_size?: number
-          notes?: string | null
-          accommodation_id?: string | null
-        }
-        Update: {
-          id?: string
-          guest_name?: string
-          email?: string
-          party_size?: number
-          notes?: string | null
-          accommodation_id?: string | null
-        }
-        Relationships: []
-      }
       registry_items: {
         Row: {
           id: string
@@ -166,35 +84,6 @@ export type Database = {
         }
         Relationships: []
       }
-      travel_tips: {
-        Row: {
-          id: string
-          sort_order: number
-          is_visible: boolean
-          created_at: string
-          icon: string
-          title: string
-          body: string
-        }
-        Insert: {
-          id?: string
-          sort_order?: number
-          is_visible?: boolean
-          created_at?: string
-          icon: string
-          title: string
-          body: string
-        }
-        Update: {
-          id?: string
-          sort_order?: number
-          is_visible?: boolean
-          icon?: string
-          title?: string
-          body?: string
-        }
-        Relationships: []
-      }
     }
     Views: { [_ in never]: never }
     Functions: { [_ in never]: never }
@@ -208,7 +97,4 @@ export type RsvpRow = Database['public']['Tables']['rsvps']['Row']
 /** Convenience alias for inserting a new RSVP */
 export type RsvpInsert = Database['public']['Tables']['rsvps']['Insert']
 
-export type AccommodationRow = Database['public']['Tables']['accommodations']['Row']
-export type AccommodationRequestInsert = Database['public']['Tables']['accommodation_requests']['Insert']
 export type RegistryItemRow = Database['public']['Tables']['registry_items']['Row']
-export type TravelTipRow = Database['public']['Tables']['travel_tips']['Row']
