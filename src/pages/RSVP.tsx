@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import emailjs from '@emailjs/browser'
+import { useTranslation } from 'react-i18next'
 import styles from './RSVP.module.css'
 import { supabase } from '../lib/supabase'
 import type { RsvpInsert } from '../lib/database.types'
@@ -20,6 +21,8 @@ interface RsvpForm {
 }
 
 export default function RSVP() {
+  const { t } = useTranslation()
+
   const [form, setForm] = useState<RsvpForm>({
     fullName: '',
     email: '',
@@ -45,19 +48,19 @@ export default function RSVP() {
     )
 
     if (validationError) {
-      setError('Something went wrong. Please try again or contact us directly.')
+      setError(t('rsvp.errors.generic'))
       setLoading(false)
       return
     }
 
     if (!validation.on_list) {
-      setError("We couldn't find your name on our guest list. Please check your name or contact us directly.")
+      setError(t('rsvp.errors.notOnList'))
       setLoading(false)
       return
     }
 
     if (validation.already_rsvped) {
-      setError('We already received an RSVP from this email address. Please contact us if you need to make a change.')
+      setError(t('rsvp.errors.alreadyRsvped'))
       setLoading(false)
       return
     }
@@ -74,7 +77,7 @@ export default function RSVP() {
     const { error: dbError } = await supabase.from('rsvps').insert(payload)
 
     if (dbError) {
-      setError('Something went wrong. Please try again or contact us directly.')
+      setError(t('rsvp.errors.generic'))
       setLoading(false)
       return
     }
@@ -106,17 +109,17 @@ export default function RSVP() {
     return (
       <section className="section" style={{ minHeight: '60svh', display: 'flex', alignItems: 'center' }}>
         <div className="container" style={{ textAlign: 'center' }}>
-          <p className="title-sm">Thank you</p>
+          <p className="title-sm">{t('rsvp.success.heading')}</p>
           <h1 className="display-md" style={{ marginTop: 16 }}>
             {form.attendance === 'yes'
-              ? 'We cannot wait to celebrate with you.'
-              : 'We will miss you dearly.'}
+              ? t('rsvp.success.attending')
+              : t('rsvp.success.notAttending')}
           </h1>
           <p className="body-lg" style={{ marginTop: 20 }}>
-            Your response has been received, {form.fullName}.
+            {t('rsvp.success.message', { name: form.fullName })}
           </p>
           <p className="body-lg" style={{ marginTop: 8, color: 'var(--on-surface-variant)' }}>
-            A confirmation has been sent to {form.email}.
+            {t('rsvp.success.confirmation', { email: form.email })}
           </p>
         </div>
       </section>
@@ -131,9 +134,9 @@ export default function RSVP() {
           <img src={RSVP_IMG} alt="Wedding stationery" />
         </div>
         <div className={`container ${styles.heroContent}`}>
-          <p className="title-sm">Kindly respond by September First</p>
+          <p className="title-sm">{t('rsvp.deadline')}</p>
           <h1 className={`display-lg ${styles.pageTitle}`}>
-            The Pleasure<br />of Your Company
+            {t('rsvp.pageTitle')}
           </h1>
         </div>
       </section>
@@ -142,30 +145,28 @@ export default function RSVP() {
       <section className="section surface-low">
         <div className={`container ${styles.formSection}`}>
           <div className={styles.formInfo}>
-            <p className="title-sm">Location &amp; Time</p>
-            <p className="headline-md" style={{ marginTop: 12 }}>{WEDDING.venueDisplay}</p>
+            <p className="title-sm">{t('rsvp.formInfo.title')}</p>
+            <p className="headline-md" style={{ marginTop: 12 }}>{t('common.venueDisplay')}</p>
             <p className="body-lg" style={{ marginTop: 8, color: 'var(--on-surface-variant)' }}>
-              {WEDDING.date} at {WEDDING.time}
+              {t('common.weddingDate')} at {t('common.weddingTime')}
             </p>
             <p className="body-lg" style={{ marginTop: 20 }}>
-              We are so excited to celebrate our special day with the people we love most.
-              Please fill out the form to let us know if you can make it.
+              {t('rsvp.formInfo.description1')}
             </p>
             <p className="body-lg" style={{ marginTop: 12 }}>
-              A confirmation will be sent to your email once your RSVP is received.
-              If you have any questions, please don't hesitate to reach out.
+              {t('rsvp.formInfo.description2')}
             </p>
           </div>
 
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {/* Full Name */}
             <div className={styles.fieldGroup}>
-              <label htmlFor="fullName" className="input-label">Full Name</label>
+              <label htmlFor="fullName" className="input-label">{t('rsvp.form.fullName')}</label>
               <input
                 id="fullName"
                 type="text"
                 className="input-field"
-                placeholder="Your full name"
+                placeholder={t('rsvp.form.fullNamePlaceholder')}
                 value={form.fullName}
                 onChange={(e) => setForm({ ...form, fullName: e.target.value })}
                 required
@@ -175,12 +176,12 @@ export default function RSVP() {
 
             {/* Email */}
             <div className={styles.fieldGroup}>
-              <label htmlFor="email" className="input-label">Email Address</label>
+              <label htmlFor="email" className="input-label">{t('rsvp.form.email')}</label>
               <input
                 id="email"
                 type="email"
                 className="input-field"
-                placeholder="your@email.com"
+                placeholder={t('rsvp.form.emailPlaceholder')}
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 required
@@ -191,7 +192,7 @@ export default function RSVP() {
             {/* Attendance */}
             <fieldset className={styles.fieldGroup} style={{ border: 'none' }}>
               <legend className="input-label" style={{ marginBottom: 16 }}>
-                Will you attend?
+                {t('rsvp.form.attendance')}
               </legend>
               <div className={styles.radioGroup}>
                 {(['yes', 'no'] as const).map((val) => (
@@ -206,7 +207,7 @@ export default function RSVP() {
                     />
                     <span className={styles.radioMark} aria-hidden="true" />
                     <span className="body-lg" style={{ marginLeft: 12 }}>
-                      {val === 'yes' ? 'Accepts with pleasure' : 'Regretfully declines'}
+                      {val === 'yes' ? t('rsvp.form.attendanceYes') : t('rsvp.form.attendanceNo')}
                     </span>
                   </label>
                 ))}
@@ -217,24 +218,24 @@ export default function RSVP() {
             {form.attendance === 'yes' && (
               <>
                 <div className={styles.fieldGroup}>
-                  <label htmlFor="allergies" className="input-label">Allergies &amp; Dietary Restrictions</label>
+                  <label htmlFor="allergies" className="input-label">{t('rsvp.form.allergies')}</label>
                   <textarea
                     id="allergies"
                     className="input-field"
                     rows={3}
-                    placeholder="Please list any allergies or dietary requirements…"
+                    placeholder={t('rsvp.form.allergiesPlaceholder')}
                     value={form.allergies}
                     onChange={(e) => setForm({ ...form, allergies: e.target.value })}
                   />
                 </div>
 
                 <div className={styles.fieldGroup}>
-                  <label htmlFor="songRequest" className="input-label">Song Request</label>
+                  <label htmlFor="songRequest" className="input-label">{t('rsvp.form.songRequest')}</label>
                   <input
                     id="songRequest"
                     type="text"
                     className="input-field"
-                    placeholder="What song will fill the dance floor?"
+                    placeholder={t('rsvp.form.songRequestPlaceholder')}
                     value={form.songRequest}
                     onChange={(e) => setForm({ ...form, songRequest: e.target.value })}
                   />
@@ -244,12 +245,12 @@ export default function RSVP() {
 
             {/* Notes */}
             <div className={styles.fieldGroup}>
-              <label htmlFor="notes" className="input-label">Notes</label>
+              <label htmlFor="notes" className="input-label">{t('rsvp.form.notes')}</label>
               <textarea
                 id="notes"
                 className="input-field"
                 rows={4}
-                placeholder="Anything else you'd like us to know…"
+                placeholder={t('rsvp.form.notesPlaceholder')}
                 value={form.notes}
                 onChange={(e) => setForm({ ...form, notes: e.target.value })}
               />
@@ -265,7 +266,7 @@ export default function RSVP() {
               style={{ marginTop: 8, alignSelf: 'flex-start' }}
               disabled={loading}
             >
-              {loading ? 'Sending…' : 'Send RSVP'}
+              {loading ? t('rsvp.form.sending') : t('rsvp.form.submit')}
             </button>
           </form>
         </div>

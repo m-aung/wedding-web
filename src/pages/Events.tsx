@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import styles from './Events.module.css'
 import { WEDDING } from '../constants/couple'
 
 const EVENTS_IMG =
-  'https://imagedelivery.net/fdRzTEFWXF8OEw2d6zGmjg/e4847f45-5abe-4630-8875-8d4a41a74b00/public'
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuBF7rLFfHOiwncN7103azNWkQUqNrPakOpqwmX76LrC41cX2aFfm778WLs_vDgoynr4f99EzRyqweCcUoDLHRZOr1qOcQMcjiNy4KaFmf8zh69GUpG7qnRBSbXg9tBfuzVa9hZdvesTP3Cf2imBG1j_URAOAFaRM7qtZMMNyfa3CJQlb6voWzxl7Px9hsv2yVobIpiOnDNKh02drueV4a_ZWh4Oxh0c0MHe0i_Xu8_uWQagC9QlGmqwjWOIHC16mkVahO3vRq3Tjm8'
 
 interface Event {
   time: string
@@ -12,27 +13,29 @@ interface Event {
   note?: string
 }
 
-const events: Event[] = [
-  {
-    time: '3:00 PM',
-    title: 'The Ceremony',
-    detail: 'Please be seated by 2:45 PM. The ceremony will begin promptly at 3:00 PM.',
-  },
-  {
-    time: '5:00 PM',
-    title: 'Cocktail Hour',
-    detail: 'Enjoy hors d\'oeuvres, signature cocktails, and time to mingle after the ceremony.',
-    note: 'Bar service includes beer, wine, and house cocktails.',
-  },
-  {
-    time: '6:00 PM',
-    title: 'The Reception',
-    detail: 'Dinner service begins at 6:30 PM, followed by toasts and dancing into the evening.',
-    note: 'Black tie requested.',
-  },
-]
-
 export default function Events() {
+  const { t } = useTranslation()
+
+  const events: Event[] = [
+    {
+      time: t('events.ceremony.time'),
+      title: t('events.ceremony.title'),
+      detail: t('events.ceremony.detail'),
+    },
+    {
+      time: t('events.cocktail.time'),
+      title: t('events.cocktail.title'),
+      detail: t('events.cocktail.detail'),
+      note: t('events.cocktail.note'),
+    },
+    {
+      time: t('events.reception.time'),
+      title: t('events.reception.title'),
+      detail: t('events.reception.detail'),
+      note: t('events.reception.note'),
+    },
+  ]
+
   return (
     <div>
       {/* ── Page header ───────────────────────────────────── */}
@@ -41,13 +44,12 @@ export default function Events() {
           <img src={EVENTS_IMG} alt="Wedding location" />
         </div>
         <div className={`container ${styles.heroContent}`}>
-          <p className="title-sm">{WEDDING.dateLong}</p>
+          <p className="title-sm">{t('common.weddingDate')}</p>
           <h1 className={`display-lg ${styles.pageTitle}`}>
-            The Wedding<br />Festivities
+            {t('events.pageTitle')}
           </h1>
           <p className="body-lg" style={{ marginTop: 20, maxWidth: 560 }}>
-            We invite you to join us for an evening of celebration, starting with
-            our exchange of vows followed by dinner and dancing under the stars.
+            {t('events.intro')}
           </p>
         </div>
       </section>
@@ -56,10 +58,10 @@ export default function Events() {
       <section className="section">
         <div className="container">
           <div style={{ marginBottom: 32 }}>
-            <p className="title-sm">Venue</p>
+            <p className="title-sm">{t('events.venueSection')}</p>
             <h2 className="headline-md" style={{ marginTop: 8 }}>{WEDDING.venueName}</h2>
             <p className="body-lg" style={{ marginTop: 8, color: 'var(--on-surface-variant)' }}>
-              All festivities are held at one location: {WEDDING.venueAddress}
+              {t('events.venueDescription')} {t('common.venueAddress')}
             </p>
             <a
               href={WEDDING.venueMapsUrl}
@@ -69,7 +71,7 @@ export default function Events() {
               style={{ marginTop: 16 }}
             >
               <span className="material-icons" aria-hidden="true">north_east</span>
-              Open Venue Map
+              {t('common.openVenueMap')}
             </a>
           </div>
 
@@ -102,16 +104,14 @@ export default function Events() {
               train
             </span>
             <div>
-              <p className="title-sm">Guest Transportation</p>
-              <h2 className="headline-md" style={{ marginTop: 8 }}>Getting to the Venue</h2>
+              <p className="title-sm">{t('events.transport')}</p>
+              <h2 className="headline-md" style={{ marginTop: 8 }}>{t('events.transportTitle')}</h2>
               <p className="body-lg" style={{ marginTop: 12 }}>
-                The nearest LIRR station is a short distance from the venue — we recommend
-                taking an Uber or Lyft from the station. Parking at the venue is limited,
-                so rideshare is highly encouraged.
+                {t('events.transportDetail')}
               </p>
               <div style={{ marginTop: 24 }}>
                 <Link to="/travel-registry" className="btn-ghost">
-                  More Travel Info
+                  {t('events.moreTravel')}
                 </Link>
               </div>
             </div>

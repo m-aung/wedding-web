@@ -1,22 +1,23 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import styles from './Home.module.css'
 import { BRIDE, GROOM, WEDDING } from '../constants/couple'
 
 const HERO_IMG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuAuMMFuu9iMWTFN-ashGyfsf9tpi8_BUzv6JoyeBdbvEFviz2Va67nEoTxNHI2pFQKplFyTljRzvaWHxEYxw4I0Xa4U_B41qEOZ0g4hb53cRvuJHwVO6cs-ugHFY1drCklXUFAPWCBinU6DWesSaS8dth0xghh9wIbjrdqrOMIEW7Lg_g37ktk_DYfiWjMoybsgCWcDl8D1XrxL1tSHYiyj4aFO_FuhZExt3JeLApZrk2nOlOMDoAzn4-DxYLTqRG7U0I-C-ZJDRns'
 
-const quickLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/our-story', label: 'Our Story' },
-  { to: '/events', label: 'Events' },
-  { to: '/dress-code', label: 'Dress Code' },
-  { to: '/q-and-a', label: 'Q&A' },
-  { to: '/rsvp', label: 'RSVP' },
-  { to: '/travel-registry', label: 'Travel & Registry' },
-]
-
 export default function Home() {
-  const [month = 'September', day = '19', year = '2026'] = WEDDING.date.replace(',', '').split(' ')
+  const { t } = useTranslation()
+
+  const quickLinks = [
+    { to: '/', label: t('nav.home') },
+    { to: '/our-story', label: t('nav.ourStory') },
+    { to: '/events', label: t('nav.events') },
+    { to: '/dress-code', label: t('nav.dressCode') },
+    { to: '/q-and-a', label: t('nav.qAndA') },
+    { to: '/rsvp', label: t('nav.rsvp') },
+    { to: '/travel-registry', label: t('nav.travelRegistry') },
+  ]
 
   return (
     <div>
@@ -35,8 +36,8 @@ export default function Home() {
           </div>
 
           <div className={styles.mobileWeddingDay}>
-            <p className={styles.mobileWeddingLabel}>Wedding Day</p>
-            <p className={styles.mobileWeddingDate}>{WEDDING.dateLong}</p>
+            <p className={styles.mobileWeddingLabel}>{t('home.weddingDay')}</p>
+            <p className={styles.mobileWeddingDate}>{t('common.weddingDate')}</p>
           </div>
 
           <nav className={styles.mobileQuickNav} aria-label="Quick page access">
@@ -58,9 +59,9 @@ export default function Home() {
           <div className={styles.desktopInfoGrid}>
             <div className={styles.desktopInfoCard}>
               <p className={styles.desktopInfoValue}>
-                {month}
+                {t('home.dateMonth')}
                 <br />
-                {day}, {year}
+                {t('home.dateDayYear')}
               </p>
             </div>
             <div className={styles.desktopInfoCard}>
@@ -77,8 +78,8 @@ export default function Home() {
           </div>
 
           <div className={styles.desktopWeddingDay}>
-            <p className={styles.desktopWeddingLabel}>Wedding Day</p>
-            <p className={styles.desktopWeddingDate}>{WEDDING.dateLong}</p>
+            <p className={styles.desktopWeddingLabel}>{t('home.weddingDay')}</p>
+            <p className={styles.desktopWeddingDate}>{t('common.weddingDate')}</p>
           </div>
         </div>
       </section>

@@ -1,23 +1,26 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import styles from './DressCode.module.css'
 
-const attireNotes = [
-  { title: 'Dressy Elegance', body: "Guests are encouraged to wear polished outfits - suits or blazers with dress pants for men (no tie, please), and either long or short dresses for women. \n Please avoid overly casual outfits such as jeans or sneakers, as we want everyone to feel special and celebration-ready. We can't wait to see your stylish looks!" },
-  { title: 'Outdoor Setting', body: "Since our wedding will be held outdoors on grass, we recommend wearing comfortable shoes suitable for walking on grass. Please also bring a light layer for the evening, as it may get cooler. We can't wait to celebrate with you in our beautiful outdoor setting!" },
-  { title: 'Color Palette', body: "Our color palette is soft and timeless, featuring neutral tones, soft pastels and muted colors. We encourage guests to choose outfits in these shades to complement the overall aesthetic of our wedding. Please avoid wearing all white, white with black pants, and peach or salmon tones, as these colors are reserved for the wedding party. We can't wait to see your elegant and stylish outfits that will perfectly complement our wedding theme!" },
-]
-
 export default function DressCode() {
+  const { t } = useTranslation()
+
+  const attireNotes = [
+    { key: 'dressy', title: t('dressCode.dressy.title'), body: t('dressCode.dressy.body') },
+    { key: 'outdoor', title: t('dressCode.outdoor.title'), body: t('dressCode.outdoor.body') },
+    { key: 'colors', title: t('dressCode.colors.title'), body: t('dressCode.colors.body') },
+  ]
+
   return (
     <div>
       <section className={styles.hero}>
         <div className="container">
-          <p className="title-sm">Style Guide</p>
+          <p className="title-sm">{t('dressCode.subtitle')}</p>
           <h1 className={`display-lg ${styles.pageTitle}`}>
-            Dress<br />Code
+            {t('dressCode.pageTitle')}
           </h1>
           <p className="body-lg" style={{ marginTop: 24, maxWidth: 640 }}>
-            Your presence matters most, and your elegant attire will make the celebration even more beautiful.
+            {t('dressCode.intro')}
           </p>
         </div>
       </section>
@@ -26,8 +29,8 @@ export default function DressCode() {
         <div className="container">
           <div className={styles.grid}>
             {attireNotes.map((item) => (
-              <article key={item.title} className={styles.card}>
-                <p className="title-sm">Wedding Note</p>
+              <article key={item.key} className={styles.card}>
+                <p className="title-sm">{t('dressCode.weddingNote')}</p>
                 <h2 className="headline-md" style={{ marginTop: 12 }}>{item.title}</h2>
                 <p className="body-lg" style={{ marginTop: 16 }}>{item.body}</p>
               </article>
@@ -38,13 +41,13 @@ export default function DressCode() {
 
       <section className="section">
         <div className="container" style={{ textAlign: 'center' }}>
-          <p className="title-sm">Next</p>
+          <p className="title-sm">{t('dressCode.ctaNext')}</p>
           <h2 className="headline-lg" style={{ marginTop: 12 }}>
-            Questions Before the Day?
+            {t('dressCode.ctaTitle')}
           </h2>
           <div style={{ marginTop: 32 }}>
             <Link to="/q-and-a" className="btn-primary">
-              View Q&amp;A
+              {t('common.viewQAndA')}
               <span className="material-icons" aria-hidden="true">arrow_forward</span>
             </Link>
           </div>

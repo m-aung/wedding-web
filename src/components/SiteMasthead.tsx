@@ -41,14 +41,18 @@ export default function SiteMasthead() {
               {i18n.language === 'en' ? 'မြန်မာ' : 'EN'}
             </button>
           </div>
-          <p className="title-sm">The Union of</p>
+          <p className="title-sm">{t('common.unionOf')}</p>
           <h1 className={`display-lg ${styles.title}`}>
             {GROOM.nickname}<span className={styles.amp}>&amp;</span>{BRIDE.nickname}
           </h1>
           <p className={`label-md ${styles.meta}`}>
-            {WEDDING.dateLong} &nbsp;•&nbsp; {WEDDING.venueCity}, NY
+            {t('common.weddingDate')} &nbsp;•&nbsp; {t('common.venueCity')}, NY
           </p>
-          {daysToGo > 0 && <p className={styles.countdown}>{daysToGo} days to go!</p>}
+          {daysToGo > 0 && (
+            <p className={styles.countdown}>
+              {t('common.daysToGo', { count: daysToGo })}
+            </p>
+          )}
 
           <nav className={styles.nav} aria-label="Desktop page access">
             {navLinks.map(({ to, label }) => (

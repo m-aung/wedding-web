@@ -21,11 +21,15 @@
     "venueCity": "New York",
     "venueDisplay": "9 Fire Place, New York",
     "venueAddress": "9 Fire Place Neck Road, Brookhaven, New York 11719",
-    "welcomeMessage": "We invite you to join us for an evening of celebration"
+    "welcomeMessage": "We invite you to join us for an evening of celebration",
+    "unionOf": "The Union of",
+    "daysToGo": "{{count}} days to go!"
   },
   "home": {
     "weddingDay": "Wedding Day",
-    "quickLinks": "Quick Links"
+    "quickLinks": "Quick Links",
+    "dateMonth": "September",
+    "dateDayYear": "19, 2026"
   },
   "ourStory": {
     "pageTitle": "Our Story",
@@ -74,13 +78,14 @@
       "note": "Black tie requested."
     },
     "transport": "Guest Transportation",
-    "transportTitle": "Shuttle Service",
-    "transportDetail": "Shuttles will depart from The Bedford Post Inn at {{time1}} and {{time2}} for guests staying on-site.",
+    "transportTitle": "Getting to the Venue",
+    "transportDetail": "The nearest LIRR station is a short distance from the venue — we recommend taking an Uber or Lyft from the station. Parking at the venue is limited, so rideshare is highly encouraged.",
     "moreTravel": "More Travel Info"
   },
   "dressCode": {
     "pageTitle": "Dress Code",
     "subtitle": "Style Guide",
+    "weddingNote": "Wedding Note",
     "intro": "Your presence matters most, and your elegant attire will make the celebration even more beautiful.",
     "dressy": {
       "title": "Dressy Elegance",
@@ -156,7 +161,9 @@
       "songRequestPlaceholder": "Share your favorite song",
       "notes": "Additional Notes",
       "notesPlaceholder": "Anything else we should know?",
-      "submit": "Submit RSVP"
+      "allergiesPlaceholder": "Please list any allergies or dietary requirements…",
+      "sending": "Sending…",
+      "submit": "Send RSVP"
     },
     "formInfo": {
       "title": "Location & Time",
@@ -171,7 +178,9 @@
       "confirmation": "A confirmation has been sent to {{email}}."
     },
     "errors": {
-      "generic": "Something went wrong. Please try again or contact us directly."
+      "generic": "Something went wrong. Please try again or contact us directly.",
+      "notOnList": "We couldn't find your name on our guest list. Please check your name or contact us directly.",
+      "alreadyRsvped": "We already received an RSVP from this email address. Please contact us if you need to make a change."
     }
   },
   "travel": {
