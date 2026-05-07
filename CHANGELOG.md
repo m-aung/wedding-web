@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1
+
+### Patch Changes
+
+- 9bac99e: Rename Cloudflare Pages project to myo-and-yoon-wedding.
+
 ## 0.4.0
 
 ### Minor Changes
