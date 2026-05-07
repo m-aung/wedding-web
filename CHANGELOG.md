@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0
+
+### Minor Changes
+
+- f732ab6: Add directions map and parking section to Travel page
+- 2479647: Add custom wedding rings favicon for browser tab and mobile home screen
+
 ## 0.3.0
 
 ### Minor Changes
