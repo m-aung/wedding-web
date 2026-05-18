@@ -111,6 +111,8 @@
     "pageTitle": "Q&A",
     "subtitle": "Helpful Details",
     "intro": "A few helpful answers to make your experience easy, joyful, and stress-free.",
+    "searchPlaceholder": "Search questions…",
+    "noResults": "No questions match your search.",
     "faqs": [
       {
         "question": "What Time Should I Arrive?",
