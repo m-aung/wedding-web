@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0
+
+### Minor Changes
+
+- 7eb327c: Add a live search input to the Q&A page that filters questions and answers in both English and Burmese.
+- 41b43e4: Add plus one and kids count fields to the RSVP form, introduce a two-step lookup flow so guests can edit a previously submitted RSVP, and handle duplicate or uninvited guest scenarios gracefully.
+
 ## 0.4.1
 
 ### Patch Changes
