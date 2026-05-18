@@ -13,30 +13,39 @@ export type Database = {
           full_name: string
           email: string | null
           attendance: 'yes' | 'no'
+          plus_one: boolean
+          kids_count: number
           allergies: string | null
           song_request: string | null
           notes: string | null
           created_at: string
+          updated_at: string | null
         }
         Insert: {
           id?: string
           full_name: string
           email?: string | null
           attendance: 'yes' | 'no'
+          plus_one?: boolean
+          kids_count?: number
           allergies?: string | null
           song_request?: string | null
           notes?: string | null
           created_at?: string
+          updated_at?: string | null
         }
         Update: {
           id?: string
           full_name?: string
           email?: string | null
           attendance?: 'yes' | 'no'
+          plus_one?: boolean
+          kids_count?: number
           allergies?: string | null
           song_request?: string | null
           notes?: string | null
           created_at?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -86,7 +95,24 @@ export type Database = {
     Functions: {
       validate_rsvp_guest: {
         Args: { p_name: string; p_email: string }
-        Returns: { on_list: boolean; already_rsvped: boolean }
+        Returns: {
+          on_list: boolean
+          rsvp_count: number
+          existing_rsvp: RsvpRow | null
+        }
+      }
+      update_rsvp: {
+        Args: {
+          p_id: string
+          p_email: string
+          p_attendance: string
+          p_plus_one: boolean
+          p_kids_count: number
+          p_allergies: string | null
+          p_song_request: string | null
+          p_notes: string | null
+        }
+        Returns: boolean
       }
     }
     Enums: { [_ in never]: never }

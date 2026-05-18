@@ -155,6 +155,12 @@
   "rsvp": {
     "pageTitle": "The Pleasure of Your Company",
     "deadline": "Kindly respond by September First",
+    "lookup": {
+      "title": "Find Your Invitation",
+      "subtitle": "Enter the name and email you used when you were invited.",
+      "button": "Continue",
+      "checking": "Checking…"
+    },
     "form": {
       "fullName": "Full Name",
       "fullNamePlaceholder": "Your full name",
@@ -163,14 +169,22 @@
       "attendance": "Will you attend?",
       "attendanceYes": "Accepts with pleasure",
       "attendanceNo": "Regretfully declines",
+      "plusOne": "Bringing a Plus One?",
+      "plusOneYes": "Yes, bringing a guest",
+      "plusOneNo": "No, just me",
+      "kids": "Children Attending",
+      "kidsNote": "Up to 3 children",
       "allergies": "Allergies & Dietary Restrictions",
       "songRequest": "Favorite Song Request",
       "songRequestPlaceholder": "Share your favorite song",
       "notes": "Additional Notes",
       "notesPlaceholder": "Anything else we should know?",
       "allergiesPlaceholder": "Please list any allergies or dietary requirements…",
-      "sending": "Sending…",
-      "submit": "Send RSVP"
+      "editBanner": "You've already submitted an RSVP. You're now updating your response.",
+      "back": "Back",
+      "sending": "Saving…",
+      "submit": "Send RSVP",
+      "update": "Update RSVP"
     },
     "formInfo": {
       "title": "Location & Time",
@@ -182,12 +196,16 @@
       "attending": "We cannot wait to celebrate with you.",
       "notAttending": "We will miss you dearly.",
       "message": "Your response has been received, {{name}}.",
+      "updated": "Your RSVP has been updated, {{name}}. We'll see you there!",
       "confirmation": "A confirmation has been sent to {{email}}."
+    },
+    "contactUs": {
+      "title": "Please Reach Out",
+      "message": "It looks like we already have multiple RSVPs on file for your information. Please contact us directly and we'll get everything sorted out."
     },
     "errors": {
       "generic": "Something went wrong. Please try again or contact us directly.",
-      "notOnList": "We couldn't find your name on our guest list. Please check your name or contact us directly.",
-      "alreadyRsvped": "We already received an RSVP from this email address. Please contact us if you need to make a change."
+      "notOnList": "We couldn't find your name on our guest list. Please double-check the spelling or reach out to us directly for help."
     }
   },
   "travel": {
