@@ -205,7 +205,10 @@
     },
     "errors": {
       "generic": "Something went wrong. Please try again or contact us directly.",
-      "notOnList": "We couldn't find your name on our guest list. Please double-check the spelling or reach out to us directly for help."
+      "notOnList": "We couldn't find your name on our guest list. Please double-check the spelling or reach out to us directly for help.",
+      "nameRequired": "Please enter your full name.",
+      "emailRequired": "Please enter your email address.",
+      "emailInvalid": "Please enter a valid email address."
     }
   },
   "travel": {

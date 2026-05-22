@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useState, useRef, type FormEvent } from 'react'
 import emailjs from '@emailjs/browser'
 import { useTranslation } from 'react-i18next'
 import styles from './RSVP.module.css'
@@ -32,6 +32,9 @@ export default function RSVP() {
   const [submittedAttendance, setSubmittedAttendance] = useState<'yes' | 'no'>('yes')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<{ fullName?: string; email?: string }>({})
+  const nameRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null)
 
   const [form, setForm] = useState<RsvpForm>({
     fullName: '',
@@ -46,9 +49,20 @@ export default function RSVP() {
 
   // ── Phase 1: look up the guest ────────────────────────────────────
 
+  const validateLookup = () => {
+    const errors: { fullName?: string; email?: string } = {}
+    if (!form.fullName.trim()) errors.fullName = t('rsvp.errors.nameRequired')
+    if (!form.email.trim()) errors.email = t('rsvp.errors.emailRequired')
+    else if (!/\S+@\S+\.\S+/.test(form.email)) errors.email = t('rsvp.errors.emailInvalid')
+    setFieldErrors(errors)
+    if (errors.fullName) nameRef.current?.focus()
+    else if (errors.email) emailRef.current?.focus()
+    return Object.keys(errors).length === 0
+  }
+
   const handleLookup = async (e: FormEvent) => {
     e.preventDefault()
-    if (!form.fullName.trim() || !form.email.trim()) return
+    if (!validateLookup()) return
 
     setLoading(true)
     setError(null)
@@ -266,29 +280,38 @@ export default function RSVP() {
               <div className={styles.fieldGroup}>
                 <label htmlFor="fullName" className="input-label">{t('rsvp.form.fullName')}</label>
                 <input
+                  ref={nameRef}
                   id="fullName"
                   type="text"
-                  className="input-field"
+                  className={`input-field${fieldErrors.fullName ? ` ${styles.inputInvalid}` : ''}`}
                   placeholder={t('rsvp.form.fullNamePlaceholder')}
                   value={form.fullName}
-                  onChange={e => setForm({ ...form, fullName: e.target.value })}
+                  onChange={e => { setForm({ ...form, fullName: e.target.value }); setFieldErrors(fe => ({ ...fe, fullName: undefined })) }}
+                  onBlur={() => { if (!form.fullName.trim()) setFieldErrors(fe => ({ ...fe, fullName: t('rsvp.errors.nameRequired') })) }}
                   required
                   autoComplete="name"
                 />
+                {fieldErrors.fullName && <p className={styles.fieldError} role="alert">{fieldErrors.fullName}</p>}
               </div>
 
               <div className={styles.fieldGroup}>
                 <label htmlFor="email" className="input-label">{t('rsvp.form.email')}</label>
                 <input
+                  ref={emailRef}
                   id="email"
                   type="email"
-                  className="input-field"
+                  className={`input-field${fieldErrors.email ? ` ${styles.inputInvalid}` : ''}`}
                   placeholder={t('rsvp.form.emailPlaceholder')}
                   value={form.email}
-                  onChange={e => setForm({ ...form, email: e.target.value })}
+                  onChange={e => { setForm({ ...form, email: e.target.value }); setFieldErrors(fe => ({ ...fe, email: undefined })) }}
+                  onBlur={() => {
+                    if (!form.email.trim()) setFieldErrors(fe => ({ ...fe, email: t('rsvp.errors.emailRequired') }))
+                    else if (!/\S+@\S+\.\S+/.test(form.email)) setFieldErrors(fe => ({ ...fe, email: t('rsvp.errors.emailInvalid') }))
+                  }}
                   required
                   autoComplete="email"
                 />
+                {fieldErrors.email && <p className={styles.fieldError} role="alert">{fieldErrors.email}</p>}
               </div>
 
               {error && <p className={styles.errorMsg} role="alert">{error}</p>}
@@ -299,6 +322,7 @@ export default function RSVP() {
                 style={{ alignSelf: 'flex-start' }}
                 disabled={loading}
               >
+                {loading && <span className={styles.spinner} aria-hidden="true" />}
                 {loading ? t('rsvp.lookup.checking') : t('rsvp.lookup.button')}
               </button>
             </form>
@@ -315,55 +339,40 @@ export default function RSVP() {
               )}
 
               {/* Attendance */}
-              <fieldset className={styles.fieldGroup} style={{ border: 'none' }}>
-                <legend className="input-label" style={{ marginBottom: 16 }}>
-                  {t('rsvp.form.attendance')}
-                </legend>
-                <div className={styles.radioGroup}>
+              <div className={styles.fieldGroup}>
+                <span className="input-label">{t('rsvp.form.attendance')}</span>
+                <div className={styles.toggleGroup}>
                   {(['yes', 'no'] as const).map(val => (
-                    <label key={val} className={styles.radioLabel}>
-                      <input
-                        type="radio"
-                        name="attendance"
-                        value={val}
-                        checked={form.attendance === val}
-                        onChange={() => setForm({ ...form, attendance: val })}
-                        className={styles.radioInput}
-                      />
-                      <span className={styles.radioMark} aria-hidden="true" />
-                      <span className="body-lg" style={{ marginLeft: 12 }}>
-                        {val === 'yes' ? t('rsvp.form.attendanceYes') : t('rsvp.form.attendanceNo')}
-                      </span>
-                    </label>
+                    <button
+                      key={val}
+                      type="button"
+                      className={`${styles.toggleBtn}${form.attendance === val ? ` ${styles.toggleBtnSelected}` : ''}`}
+                      onClick={() => setForm({ ...form, attendance: val })}
+                    >
+                      {val === 'yes' ? t('rsvp.form.attendanceYes') : t('rsvp.form.attendanceNo')}
+                    </button>
                   ))}
                 </div>
-              </fieldset>
+              </div>
 
               {form.attendance === 'yes' && (
                 <>
                   {/* Plus one */}
-                  <fieldset className={styles.fieldGroup} style={{ border: 'none' }}>
-                    <legend className="input-label" style={{ marginBottom: 16 }}>
-                      {t('rsvp.form.plusOne')}
-                    </legend>
-                    <div className={styles.radioGroup}>
+                  <div className={styles.fieldGroup}>
+                    <span className="input-label">{t('rsvp.form.plusOne')}</span>
+                    <div className={styles.toggleGroup}>
                       {([false, true] as const).map(val => (
-                        <label key={String(val)} className={styles.radioLabel}>
-                          <input
-                            type="radio"
-                            name="plusOne"
-                            checked={form.plusOne === val}
-                            onChange={() => setForm({ ...form, plusOne: val })}
-                            className={styles.radioInput}
-                          />
-                          <span className={styles.radioMark} aria-hidden="true" />
-                          <span className="body-lg" style={{ marginLeft: 12 }}>
-                            {val ? t('rsvp.form.plusOneYes') : t('rsvp.form.plusOneNo')}
-                          </span>
-                        </label>
+                        <button
+                          key={String(val)}
+                          type="button"
+                          className={`${styles.toggleBtn}${form.plusOne === val ? ` ${styles.toggleBtnSelected}` : ''}`}
+                          onClick={() => setForm({ ...form, plusOne: val })}
+                        >
+                          {val ? t('rsvp.form.plusOneYes') : t('rsvp.form.plusOneNo')}
+                        </button>
                       ))}
                     </div>
-                  </fieldset>
+                  </div>
 
                   {/* Kids count */}
                   <div className={styles.fieldGroup}>
@@ -450,6 +459,7 @@ export default function RSVP() {
                   className="btn-primary"
                   disabled={loading || !form.attendance}
                 >
+                  {loading && <span className={styles.spinner} aria-hidden="true" />}
                   {loading
                     ? t('rsvp.form.sending')
                     : isEditing
