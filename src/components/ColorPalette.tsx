@@ -58,6 +58,7 @@ export default function ColorPalette() {
   const { t } = useTranslation()
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   useEffect(() => {
     const el = ref.current
@@ -70,6 +71,8 @@ export default function ColorPalette() {
     return () => obs.disconnect()
   }, [])
 
+  const activeColor = hoveredIndex !== null ? palette[hoveredIndex] : null
+
   return (
     <div ref={ref} className={styles.root}>
       <div className={`${styles.wheelWrap} ${visible ? styles.wheelVisible : ''}`}>
@@ -80,16 +83,30 @@ export default function ColorPalette() {
         >
           {palette.map((c, i) => {
             const { d, tx, ty } = buildSegment(i, palette.length)
+            const isActive = hoveredIndex === i
             return (
               <path
                 key={c.hex}
                 d={d}
                 fill={c.hex}
-                className={styles.segment}
+                className={`${styles.segment} ${isActive ? styles.segmentActive : ''}`}
                 style={{ '--tx': `${tx}px`, '--ty': `${ty}px` } as React.CSSProperties}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
               />
             )
           })}
+          {activeColor && (
+            <text
+              x={CX}
+              y={CY + 5}
+              textAnchor="middle"
+              className={styles.centerLabel}
+              fill="currentColor"
+            >
+              {activeColor.name}
+            </text>
+          )}
         </svg>
       </div>
 
@@ -97,8 +114,10 @@ export default function ColorPalette() {
         {palette.map((c, i) => (
           <div
             key={c.hex}
-            className={`${styles.chip} ${visible ? styles.chipVisible : ''}`}
+            className={`${styles.chip} ${visible ? styles.chipVisible : ''} ${hoveredIndex === i ? styles.chipActive : ''}`}
             style={visible ? { animationDelay: `${0.5 + i * 0.07}s` } : undefined}
+            onMouseEnter={() => setHoveredIndex(i)}
+            onMouseLeave={() => setHoveredIndex(null)}
           >
             <span className={styles.dot} style={{ background: c.hex }} />
             <span className="label-md">{c.name}</span>

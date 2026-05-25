@@ -42,7 +42,7 @@ export default function Events() {
         <div className={styles.heroImg}>
           <img src={EVENTS_IMG} alt="Wedding location" />
         </div>
-        <div className={`container ${styles.heroContent}`}>
+        {/* <div className={`container ${styles.heroContent}`}>
           <p className="title-sm">{t('common.weddingDate')}</p>
           <h1 className={`display-lg ${styles.pageTitle}`}>
             {t('events.pageTitle')}
@@ -50,7 +50,7 @@ export default function Events() {
           <p className="body-lg" style={{ marginTop: 20, maxWidth: 560 }}>
             {t('events.intro')}
           </p>
-        </div>
+        </div> */}
       </section>
 
       {/* ── Event timeline ────────────────────────────────── */}
