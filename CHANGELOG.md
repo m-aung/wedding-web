@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.0
+
+### Minor Changes
+
+- 0237764: Hovering a wheel segment or colour chip now highlights both — the segment pushes out and the matching chip label bolds, with the colour name shown in the wheel centre.
+
 ## 0.6.0
 
 ### Minor Changes
