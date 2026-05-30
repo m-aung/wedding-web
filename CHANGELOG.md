@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.8.0
+
+### Minor Changes
+
+- fa326ac: Update carpool info with Jamaica Center meetup details. Updated the carpool travel tip to confirm a carpool will be waiting at Jamaica Center–Parsons/Archer station at 1:00 PM, with a return carpool also arranged for the end of the evening.
+- d705714: Update dress code attire notes and add colour palette images. Rewrote the three attire note bodies (dressy, outdoor, colors) and added responsive palette images — full palette on desktop, stacked women/men palettes on mobile.
+
+### Patch Changes
+
+- f66e929: Fix Our Story hero background to match other pages. Removed the grey surface-low background from the Our Story page header, replacing it with the same white hero style used across all other pages.
+
 ## 0.7.0
 
 ### Minor Changes
