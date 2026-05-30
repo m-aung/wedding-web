@@ -74,7 +74,9 @@ export default function TravelRegistry() {
                 </span>
                 <div>
                   <p className="title-sm" style={{ marginBottom: 8 }}>{tip.title}</p>
-                  <p className="body-lg">{tip.body}</p>
+                  {tip.body.split('\n\n').map((para, j) => (
+                    <p key={j} className="body-lg" style={{ marginTop: j > 0 ? 12 : 0 }}>{para}</p>
+                  ))}
                 </div>
               </div>
             ))}
