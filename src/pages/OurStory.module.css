@@ -1,3 +1,7 @@
+.hero {
+  padding-top: clamp(96px, 12vw, 140px);
+}
+
 .pageTitle {
   margin-top: 12px;
   line-height: 1;

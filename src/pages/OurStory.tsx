@@ -41,7 +41,7 @@ export default function OurStory() {
   return (
     <div>
       {/* ── Page header ───────────────────────────────────── */}
-      <section className={`section surface-low`}>
+      <section className={`section ${styles.hero}`}>
         <div className="container">
           <p className="title-sm">{t('ourStory.subtitle')}</p>
           <h1 className={`display-lg ${styles.pageTitle}`}>
