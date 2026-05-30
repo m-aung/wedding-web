@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styles from './DressCode.module.css'
-import ColorPalette from '../components/ColorPalette'
-import DressGallery from '../components/DressGallery'
 
 export default function DressCode() {
   const { t } = useTranslation()
@@ -34,30 +32,19 @@ export default function DressCode() {
               <article key={item.key} className={styles.card}>
                 <p className="title-sm">{t('dressCode.weddingNote')}</p>
                 <h2 className="headline-md" style={{ marginTop: 12 }}>{item.title}</h2>
-                <p className="body-lg" style={{ marginTop: 16 }}>{item.body}</p>
+                {item.body.split('\n\n').map((para, i) => (
+                  <p key={i} className="body-lg" style={{ marginTop: i === 0 ? 16 : 12 }}>{para}</p>
+                ))}
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container" style={{ textAlign: 'center', marginBottom: 48 }}>
-          <p className="title-sm">{t('dressCode.gallerySection')}</p>
-          <h2 className="headline-lg" style={{ marginTop: 12 }}>
-            {t('dressCode.galleryHeading')}
-          </h2>
-        </div>
-        <DressGallery />
-      </section>
-
-      <section className="section surface-low">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <p className="title-sm">{t('dressCode.paletteSection')}</p>
-          <h2 className="headline-lg" style={{ marginTop: 12, marginBottom: 48 }}>
-            {t('dressCode.paletteHeading')}
-          </h2>
-          <ColorPalette />
+          <div className={styles.paletteImage}>
+            <img className={styles.paletteDesktop} src="/color-palette.png" alt="Wedding colour palette" />
+            <div className={styles.paletteMobile}>
+              <img src="/for-women-palette.jpeg" alt="Colour palette for women" />
+              <img src="/for-men-palette.jpeg" alt="Colour palette for men" />
+            </div>
+          </div>
         </div>
       </section>
 

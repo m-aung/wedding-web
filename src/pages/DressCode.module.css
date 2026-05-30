@@ -30,3 +30,35 @@
     grid-template-columns: 1fr;
   }
 }
+
+.paletteImage {
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+.paletteDesktop {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.paletteMobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .paletteDesktop {
+    display: none;
+  }
+
+  .paletteMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .paletteMobile img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
