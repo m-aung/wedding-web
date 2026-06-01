@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.0
+
+### Minor Changes
+
+- 5045f3d: Add tap-to-zoom lightbox to story chapter photos and dress code palette images — tap or click any photo to view it full-screen, with pinch-to-zoom support on mobile.
+- a9acae5: Restrict special characters in the RSVP name field and close the RSVP form after August 1st with a polite deadline-passed message in English and Burmese.
+- 7c5d588: Rename Travel page file to TravelInfo, replace the parking map placeholder with the real image, and enable tap-to-zoom on the parking map photo.
+- 3cbe90a: Rename route from /travel-registry to /travel-info across all navigation and links, and update the parking message to clarify that street parking is available but guests should not park on the grass along Fireplace Neck Rd.
+
+### Patch Changes
+
+- 48b3211: Update LIRR link in both locales to the MTA trip planner pre-set for the wedding day (Sep 19, 2026), arriving at Mastic-Shirley by 2:50 PM to allow time for the Uber/Lyft ride to the venue.
+
 ## 0.9.0
 
 ### Minor Changes
