@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.10.2
+
+### Patch Changes
+
+- 9f36176: Fix Burmese translation for the karaoke timeline detail — use မောင်နှံနှစ်ဦး (the couple) instead of စုံတွဲ for a more natural phrasing.
+- b8e8af0: Fix timeline alignment on the Events page — use baseline alignment so the time label and event title sit on the same horizontal line in both English and Burmese. Also widen the time column to 150px to accommodate longer Burmese time strings.
+
 ## 0.10.1
 
 ### Patch Changes
