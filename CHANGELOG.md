@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.0
+
+### Minor Changes
+
+- dbae1eb: Named the closest LIRR station (Mastic-Shirley, Montauk Branch) on the Travel page and Events page, and added a link to buy LIRR tickets on the MTA website.
+- ade689c: Removed the gift registry section and renamed the page from "Travel & Registry" to "Travel Info". The registry_items database table has been dropped.
+
+### Patch Changes
+
+- 6a36748: Corrected cocktail hour (4 PM) and reception (5 PM) times, added karaoke to the timeline, simplified reception details, and updated the home page hero photo.
+
 ## 0.8.0
 
 ### Minor Changes
