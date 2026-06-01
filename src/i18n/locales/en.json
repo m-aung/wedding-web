@@ -16,7 +16,7 @@
     "coupleName": "Myo & Yoon",
     "weddingDate": "Saturday, September 19, 2026",
     "weddingDateShort": "9.19.2026",
-    "weddingTime": "4:00 PM",
+    "weddingTime": "3:30 PM",
     "venueName": "9 Fire Place",
     "venueCity": "New York",
     "venueDisplay": "9 Fire Place, New York",
@@ -61,21 +61,26 @@
     "venueDescription": "All festivities are held at one location:",
     "timeline": "Event Timeline",
     "ceremony": {
-      "time": "3:00 PM",
+      "time": "3:30 PM",
       "title": "The Ceremony",
-      "detail": "Please be seated by 2:45 PM. The ceremony will begin promptly at 3:00 PM."
+      "detail": "Please plan to arrive by 2:45 PM and be seated by 3:15 PM. The ceremony will begin promptly at 3:30 PM."
     },
     "cocktail": {
-      "time": "5:00 PM",
+      "time": "4:00 PM",
       "title": "Cocktail Hour",
-      "detail": "Enjoy hors d'oeuvres, signature cocktails, and time to mingle after the ceremony.",
+      "detail": "Enjoy drinks, hors d'oeuvres, and mingling while the wedding party takes photos.",
       "note": "Bar service includes beer, wine, and house cocktails."
     },
     "reception": {
-      "time": "6:00 PM",
+      "time": "5:00 PM",
       "title": "The Reception",
-      "detail": "Dinner service begins at 6:30 PM, followed by toasts and dancing into the evening.",
-      "note": "Black tie requested."
+      "detail": "Dinner service begins at 5:20 PM, followed by toasts and speeches.",
+      "note": "Dinner will be served buffet-style with a variety of options."
+    },
+    "karaoke": {
+      "time": "7:45 PM",
+      "title": "Karaoke",
+      "detail": "The couple opens the mic to kick off karaoke — all guests are encouraged to join in the fun!"
     },
     "transport": "Guest Transportation",
     "transportTitle": "Getting to the Venue",
@@ -116,7 +121,7 @@
     "faqs": [
       {
         "question": "What Time Should I Arrive?",
-        "answer": "Please plan to arrive by 3:00 PM to allow time to find parking and get settled before the ceremony begins at 4:00 PM."
+        "answer": "Please plan to arrive by 2:45 PM to allow time to find parking and get settled before the ceremony begins at 3:30 PM."
       },
       {
         "question": "Is Parking Available at the Venue?",
@@ -128,7 +133,7 @@
       },
       {
         "question": "Will ceremony start on time?",
-        "answer": "Yes, the ceremony will begin promptly at 4:00 PM. We recommend arriving by 3:00 PM to allow time for parking and finding your seat. We can't wait to celebrate with you!"
+        "answer": "Yes, the ceremony will begin promptly at 3:30 PM. We recommend arriving by 2:45 PM to allow time for parking and finding your seat. We can't wait to celebrate with you!"
       },
       {
         "question": "Is the wedding outdoors?",
@@ -144,7 +149,7 @@
       },
       {
         "question": "What time will the celebration end?",
-        "answer": "The celebration will officially end around 7:00 - 8:00 PM. However, we encourage everyone to stay and enjoy the festivities as long as they like! We will have music, dancing, and plenty of fun to keep the party going. We can't wait to celebrate with you until the very end!"
+        "answer": "The celebration will officially end at 10:00 PM. The evening includes dinner, dancing, and karaoke — we can't wait to celebrate with you until the very end!"
       },
       {
         "question": "Allergies or dietary restrictions?",

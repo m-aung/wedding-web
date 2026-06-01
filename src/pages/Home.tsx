@@ -3,9 +3,6 @@ import { useTranslation } from 'react-i18next'
 import styles from './Home.module.css'
 import { BRIDE, GROOM, WEDDING } from '../constants/couple'
 
-const HERO_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAuMMFuu9iMWTFN-ashGyfsf9tpi8_BUzv6JoyeBdbvEFviz2Va67nEoTxNHI2pFQKplFyTljRzvaWHxEYxw4I0Xa4U_B41qEOZ0g4hb53cRvuJHwVO6cs-ugHFY1drCklXUFAPWCBinU6DWesSaS8dth0xghh9wIbjrdqrOMIEW7Lg_g37ktk_DYfiWjMoybsgCWcDl8D1XrxL1tSHYiyj4aFO_FuhZExt3JeLApZrk2nOlOMDoAzn4-DxYLTqRG7U0I-C-ZJDRns'
-
 export default function Home() {
   const { t } = useTranslation()
 
@@ -24,7 +21,7 @@ export default function Home() {
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroImage}>
-          <img src={HERO_IMG} alt={`${GROOM.nickname} and ${BRIDE.nickname}`} />
+          <img src={'public/couple-hero-main.jpg'} alt={`${GROOM.nickname} and ${BRIDE.nickname}`} />
         </div>
         <div className={styles.mobileLaceBlock} aria-hidden="true" />
       </section>

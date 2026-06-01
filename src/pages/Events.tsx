@@ -33,6 +33,11 @@ export default function Events() {
       detail: t('events.reception.detail'),
       note: t('events.reception.note'),
     },
+    {
+      time: t('events.karaoke.time'),
+      title: t('events.karaoke.title'),
+      detail: t('events.karaoke.detail'),
+    },
   ]
 
   return (
