@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.1
+
+### Patch Changes
+
+- 179a641: Fix image src paths — use root-relative paths (/filename) instead of relative public/ prefixes so images load correctly in production. Also rename wedding_parking_map.jpeg to wedding-parking-map.jpeg for consistency.
+
 ## 0.10.0
 
 ### Minor Changes
