@@ -12,6 +12,8 @@ const TIP_ICONS = ['train', 'directions_car', 'people']
 interface Tip {
   title: string
   body: string
+  linkUrl?: string
+  linkText?: string
 }
 
 export default function TravelRegistry() {
@@ -77,6 +79,18 @@ export default function TravelRegistry() {
                   {tip.body.split('\n\n').map((para, j) => (
                     <p key={j} className="body-lg" style={{ marginTop: j > 0 ? 12 : 0 }}>{para}</p>
                   ))}
+                  {tip.linkUrl && tip.linkText && (
+                    <a
+                      href={tip.linkUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-ghost"
+                      style={{ marginTop: 16 }}
+                    >
+                      <span className="material-icons" aria-hidden="true">north_east</span>
+                      {tip.linkText}
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

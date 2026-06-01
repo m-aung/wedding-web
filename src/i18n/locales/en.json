@@ -84,7 +84,7 @@
     },
     "transport": "Guest Transportation",
     "transportTitle": "Getting to the Venue",
-    "transportDetail": "The nearest LIRR station is a short distance from the venue — we recommend taking an Uber or Lyft from the station. Parking at the venue is limited, so rideshare is highly encouraged.",
+    "transportDetail": "The closest LIRR station is Mastic-Shirley (Montauk Branch), a short distance from the venue — we recommend taking an Uber or Lyft from there. Parking at the venue is limited, so rideshare is highly encouraged.",
     "moreTravel": "More Travel Info"
   },
   "dressCode": {
@@ -224,7 +224,9 @@
     "tips": [
       {
         "title": "LIRR & Rideshare",
-        "body": "The nearest LIRR station is located a short distance from the venue. Guests may take an Uber or Lyft from the station for convenience."
+        "body": "The closest LIRR station is Mastic-Shirley (Montauk Branch), located a short distance from the venue. Guests may take an Uber or Lyft from the station for convenience.",
+        "linkUrl": "https://www.mta.info/fares/buy-railroad-tickets",
+        "linkText": "Buy LIRR tickets"
       },
       {
         "title": "Parking",
