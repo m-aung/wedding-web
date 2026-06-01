@@ -9,7 +9,7 @@ import Home from './pages/Home'
 import OurStory from './pages/OurStory'
 import Events from './pages/Events'
 import RSVP from './pages/RSVP'
-import TravelRegistry from './pages/TravelRegistry'
+import TravelRegistry from './pages/TravelInfo'
 import DressCode from './pages/DressCode'
 import QAndA from './pages/QAndA'
 

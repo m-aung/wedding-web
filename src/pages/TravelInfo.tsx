@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import styles from './TravelRegistry.module.css'
+import styles from './TravelInfo.module.css'
+import LightboxImage from '../components/LightboxImage';
 
 const HERO_IMG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuC-3rBcBWfy9Lx8nTDGVfNcpos6864OogHeB9eOAx3TQXhyTnGfkyJkT8qrvc9cI5cuGrCSEW4NrzJXh10jpPhgJCjepzhs1MLZmWPV88ItpEd2dDH8JQawjEabg5-Eb5c7QUBK7bL655I6PhrgXn-HclV_h_gty5SKCdVPN-1RrzbBnlWjnuAa7LLoVeAZqX2ZpOm2D7axXV_IsNchUdnnyslFoWB7c_ol8St2JeHP0K30plDHYIXKj3NQyaTzHliYTDCnaONnTLo'
@@ -93,8 +94,8 @@ export default function TravelRegistry() {
               />
             </div>
             <div className={styles.parkingImg}>
-              <img
-                src="https://placehold.co/800x500/e8e0db/8d7c6e?text=Parking+Map+(placeholder)"
+              <LightboxImage
+                src="public\wedding_parking_map.jpeg"
                 alt="Parking map placeholder"
               />
               <p className={`body-lg ${styles.parkingCaption}`}>
