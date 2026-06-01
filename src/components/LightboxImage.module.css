@@ -1,0 +1,104 @@
+.trigger {
+  position: relative;
+  cursor: zoom-in;
+  display: block;
+}
+
+.hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.hint .material-icons {
+  font-size: 44px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+.trigger:hover .hint {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+/* On touch devices show a small badge instead of a full overlay */
+@media (hover: none) {
+  .hint {
+    opacity: 1;
+    background: transparent;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 8px;
+  }
+
+  .hint .material-icons {
+    font-size: 22px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 50%;
+    padding: 4px;
+  }
+}
+
+/* ── Modal backdrop ──────────────────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.lightboxImg {
+  max-width: 100%;
+  max-height: 90svh;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+  animation: scaleIn 0.15s ease;
+  /* allow native pinch-to-zoom on mobile */
+  touch-action: pinch-zoom;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); }
+  to   { transform: scale(1); }
+}
+
+.closeBtn {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  /* large tap target on mobile */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.28);
+}

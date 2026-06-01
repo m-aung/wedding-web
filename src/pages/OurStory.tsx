@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styles from './OurStory.module.css'
+import LightboxImage from '../components/LightboxImage'
 
 export default function OurStory() {
   const { t } = useTranslation()
@@ -22,7 +23,7 @@ export default function OurStory() {
       place: t('ourStory.chapterTwo.date'),
       body: t('ourStory.chapterTwo.body'),
       image:
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuC0MtlRJs6cKmeg-NgvAnbuDqBGRN9xBdffZ_9djVwyM5u-UHVRNKDt8kWbUlrJ8inqeO7C4pNqnEGW8Gsk_zbc6IbuZIJnA8Ds3Bk01OkZHaxJ-rx7a1uL6Kf4oblW3TuieTo5O6NQN7MYAnjkFdjbxf_PLYkEitarNRlLwpSlofkLTA_4RgAF54utRnClLdgZACb8JjfSEVAFHUUAN1bicqEgQFMFev4YY3Ee_4Mou-Jb082uQuzSFrPoO9mC1ACq-SzeKSefoy4',
+        'https://imagedelivery.net/fdRzTEFWXF8OEw2d6zGmjg/b0d38214-46ca-4f68-188b-68c38b8c0100/public',
       imgAlt: 'A moment shared between two people in love',
       imageRight: true,
     },
@@ -61,9 +62,7 @@ export default function OurStory() {
         >
           <div className="container">
             <div className={styles.grid}>
-              <div className={styles.imageWrap}>
-                <img src={ch.image} alt={ch.imgAlt} />
-              </div>
+              <LightboxImage src={ch.image} alt={ch.imgAlt} containerClassName={styles.imageWrap} />
               <div className={styles.text}>
                 <p className="title-sm">{ch.label}</p>
                 <h2 className="headline-lg" style={{ marginTop: 12 }}>{ch.place}</h2>

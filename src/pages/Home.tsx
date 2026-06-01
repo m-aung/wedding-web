@@ -21,7 +21,7 @@ export default function Home() {
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroImage}>
-          <img src={'public/couple-hero-main.jpg'} alt={`${GROOM.nickname} and ${BRIDE.nickname}`} />
+          <img src="public/couple-hero-main.jpg" alt={`${GROOM.nickname} and ${BRIDE.nickname}`} />
         </div>
         <div className={styles.mobileLaceBlock} aria-hidden="true" />
       </section>

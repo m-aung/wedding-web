@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styles from './DressCode.module.css'
+import LightboxImage from '../components/LightboxImage'
 
 export default function DressCode() {
   const { t } = useTranslation()
@@ -39,10 +40,10 @@ export default function DressCode() {
             ))}
           </div>
           <div className={styles.paletteImage}>
-            <img className={styles.paletteDesktop} src="/color-palette.png" alt="Wedding colour palette" />
+            <LightboxImage className={styles.paletteDesktop} src="/color-palette.png" alt="Wedding colour palette" />
             <div className={styles.paletteMobile}>
-              <img src="/for-women-palette.jpeg" alt="Colour palette for women" />
-              <img src="/for-men-palette.jpeg" alt="Colour palette for men" />
+              <LightboxImage src="/for-women-palette.jpeg" alt="Colour palette for women" />
+              <LightboxImage src="/for-men-palette.jpeg" alt="Colour palette for men" />
             </div>
           </div>
         </div>
