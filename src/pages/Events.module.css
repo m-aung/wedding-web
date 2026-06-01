@@ -55,18 +55,16 @@
 
 .eventCard {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 150px 1fr;
   gap: 40px;
   padding-block: 48px;
+  align-items: baseline;
 }
 
 .eventCard + .eventCard {
   border-top: none;
 }
 
-.timeCol {
-  padding-top: 4px;
-}
 
 .time {
   font-family: var(--font-display);
