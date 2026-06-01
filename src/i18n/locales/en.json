@@ -208,6 +208,10 @@
       "title": "Please Reach Out",
       "message": "It looks like we already have multiple RSVPs on file for your information. Please contact us directly and we'll get everything sorted out."
     },
+    "deadlinePassed": {
+      "title": "RSVP Deadline Has Passed",
+      "message": "Thank you so much for your love and support. Unfortunately, the RSVP deadline of August 1st has passed, and we are no longer able to accept new reservations or updates. If you have any questions, please don't hesitate to reach out to us."
+    },
     "errors": {
       "generic": "Something went wrong. Please try again or contact us directly.",
       "notOnList": "We couldn't find your name on our guest list. Please double-check the spelling or reach out to us directly for help.",

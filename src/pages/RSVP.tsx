@@ -9,6 +9,8 @@ import { WEDDING, COUPLE_EMAIL } from '../constants/couple'
 const RSVP_IMG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDLSHiy6jultd-Yd5b5adQpBM25F2TxLIfrc5ZlW1hlGlGtGRc1HtZ6zrYV_lcxTONGE7QM6EKhVbl9TAWS-NsEPkN_xeLI7h5QsUqz-9UMvtJTkRikJEtySFOt6cGRlJSUb7xVwTpPDkFw6bu-PQF6aEQsCUyl0uB2JiXhJWsSGDyX_eEynh1wVW4NhtYRRa7hk01iafCks-J0K24KKq6Ejo5yLSXuzBUttXDKMsCoO0MKmXZM5cjT5RF8Kk0RkRdsZVpBAcN2yhs'
 
+const RSVP_DEADLINE = new Date('2026-08-01T23:59:59')
+
 type Phase = 'lookup' | 'form' | 'success' | 'contact-us'
 type AttendanceOption = 'yes' | 'no' | ''
 
@@ -25,6 +27,7 @@ interface RsvpForm {
 
 export default function RSVP() {
   const { t } = useTranslation()
+  const isDeadlinePassed = new Date() > RSVP_DEADLINE
 
   const [phase, setPhase] = useState<Phase>('lookup')
   const [existingRsvpId, setExistingRsvpId] = useState<string | null>(null)
@@ -241,6 +244,29 @@ export default function RSVP() {
     )
   }
 
+  // ── Deadline passed ───────────────────────────────────────────────
+
+  if (isDeadlinePassed) {
+    return (
+      <section className="section" style={{ minHeight: '60svh', display: 'flex', alignItems: 'center' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <span className="material-icons" style={{ fontSize: 40, color: 'var(--on-surface-variant)' }}>event_busy</span>
+          <h1 className="display-md" style={{ marginTop: 16 }}>{t('rsvp.deadlinePassed.title')}</h1>
+          <p className="body-lg" style={{ marginTop: 20, maxWidth: 520, margin: '20px auto 0' }}>
+            {t('rsvp.deadlinePassed.message')}
+          </p>
+          <a
+            href={`mailto:${COUPLE_EMAIL}`}
+            className="btn-primary"
+            style={{ marginTop: 32, display: 'inline-block' }}
+          >
+            {COUPLE_EMAIL}
+          </a>
+        </div>
+      </section>
+    )
+  }
+
   // ── Main layout (lookup + form phases) ───────────────────────────
 
   return (
@@ -286,7 +312,7 @@ export default function RSVP() {
                   className={`input-field${fieldErrors.fullName ? ` ${styles.inputInvalid}` : ''}`}
                   placeholder={t('rsvp.form.fullNamePlaceholder')}
                   value={form.fullName}
-                  onChange={e => { setForm({ ...form, fullName: e.target.value }); setFieldErrors(fe => ({ ...fe, fullName: undefined })) }}
+                  onChange={e => { setForm({ ...form, fullName: e.target.value.replace(/[^\p{L}\s]/gu, '') }); setFieldErrors(fe => ({ ...fe, fullName: undefined })) }}
                   onBlur={() => { if (!form.fullName.trim()) setFieldErrors(fe => ({ ...fe, fullName: t('rsvp.errors.nameRequired') })) }}
                   required
                   autoComplete="name"
