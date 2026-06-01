@@ -6,7 +6,7 @@
     "dressCode": "Dress Code",
     "qAndA": "Q&A",
     "rsvp": "RSVP",
-    "travelRegistry": "Travel & Registry"
+    "travelRegistry": "Travel Info"
   },
   "common": {
     "openVenueMap": "Open Venue Map",
@@ -217,7 +217,7 @@
     }
   },
   "travel": {
-    "pageTitle": "Travel Information",
+    "pageTitle": "Travel Info",
     "subtitle": "Getting Here",
     "travelGuide": "How to Arrive",
     "venueGuide": "Getting to the Venue",

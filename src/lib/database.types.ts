@@ -49,47 +49,6 @@ export type Database = {
         }
         Relationships: []
       }
-      registry_items: {
-        Row: {
-          id: string
-          sort_order: number
-          is_visible: boolean
-          created_at: string
-          subtitle: string
-          title: string
-          store_name: string
-          store_url: string
-          image_url: string | null
-          is_fund: boolean
-          description: string | null
-        }
-        Insert: {
-          id?: string
-          sort_order?: number
-          is_visible?: boolean
-          created_at?: string
-          subtitle: string
-          title: string
-          store_name: string
-          store_url: string
-          image_url?: string | null
-          is_fund?: boolean
-          description?: string | null
-        }
-        Update: {
-          id?: string
-          sort_order?: number
-          is_visible?: boolean
-          subtitle?: string
-          title?: string
-          store_name?: string
-          store_url?: string
-          image_url?: string | null
-          is_fund?: boolean
-          description?: string | null
-        }
-        Relationships: []
-      }
     }
     Views: { [_ in never]: never }
     Functions: {
@@ -125,4 +84,3 @@ export type RsvpRow = Database['public']['Tables']['rsvps']['Row']
 /** Convenience alias for inserting a new RSVP */
 export type RsvpInsert = Database['public']['Tables']['rsvps']['Insert']
 
-export type RegistryItemRow = Database['public']['Tables']['registry_items']['Row']
