@@ -30,4 +30,3 @@ Commit staged changes and ensure a changeset exists for the changelog.
    git commit -m "<type>: <short summary from changeset description>"
    ```
    Where `<type>` is `feat` for minor, `fix` for patch, `chore` for major.
-   Include the standard Co-Authored-By trailer.
