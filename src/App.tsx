@@ -9,7 +9,7 @@ import Home from './pages/Home'
 import OurStory from './pages/OurStory'
 import Events from './pages/Events'
 import RSVP from './pages/RSVP'
-import TravelRegistry from './pages/TravelInfo'
+import TravelInfo from './pages/TravelInfo'
 import DressCode from './pages/DressCode'
 import QAndA from './pages/QAndA'
 
@@ -43,7 +43,7 @@ export default function App() {
             <Route path="/dress-code" element={<DressCode />} />
             <Route path="/q-and-a" element={<QAndA />} />
             <Route path="/rsvp" element={<RSVP />} />
-            <Route path="/travel-registry" element={<TravelRegistry />} />
+            <Route path="/travel-info" element={<TravelInfo />} />
           </Routes>
         <Footer />
         </main>

@@ -13,7 +13,7 @@ export default function Home() {
     { to: '/dress-code', label: t('nav.dressCode') },
     { to: '/q-and-a', label: t('nav.qAndA') },
     { to: '/rsvp', label: t('nav.rsvp') },
-    { to: '/travel-registry', label: t('nav.travelRegistry') },
+    { to: '/travel-info', label: t('nav.travelRegistry') },
   ]
 
   return (

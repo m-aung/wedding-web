@@ -114,7 +114,7 @@ export default function Events() {
                 {t('events.transportDetail')}
               </p>
               <div style={{ marginTop: 24 }}>
-                <Link to="/travel-registry" className="btn-ghost">
+                <Link to="/travel-info" className="btn-ghost">
                   {t('events.moreTravel')}
                 </Link>
               </div>
