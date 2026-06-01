@@ -40,7 +40,7 @@ export default function DressCode() {
             ))}
           </div>
           <div className={styles.paletteImage}>
-            <LightboxImage className={styles.paletteDesktop} src="/color-palette.png" alt="Wedding colour palette" />
+            <LightboxImage className={styles.paletteDesktop} src="/color-palette.png" alt="Wedding color palette" />
             <div className={styles.paletteMobile}>
               <LightboxImage src="/for-women-palette.jpeg" alt="Colour palette for women" />
               <LightboxImage src="/for-men-palette.jpeg" alt="Colour palette for men" />

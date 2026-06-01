@@ -95,7 +95,7 @@ export default function TravelRegistry() {
             </div>
             <div className={styles.parkingImg}>
               <LightboxImage
-                src="public\wedding_parking_map.jpeg"
+                src="/wedding-parking-map.jpeg"
                 alt="Parking map placeholder"
               />
               <p className={`body-lg ${styles.parkingCaption}`}>
