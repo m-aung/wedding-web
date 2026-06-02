@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.3
+
+### Patch Changes
+
+- 09e888a: Remove brightness filter from Events hero image
+
 ## 0.10.2
 
 ### Patch Changes
