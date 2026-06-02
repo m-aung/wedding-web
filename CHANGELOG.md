@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.4
+
+### Patch Changes
+
+- 66a5050: Clarify Our Story chapter one narrative — clearer timeline and relationship details
+
 ## 0.10.3
 
 ### Patch Changes
