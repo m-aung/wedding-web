@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.5
+
+### Patch Changes
+
+- ee71a50: Trigger production build deployment.
+
 ## 0.10.4
 
 ### Patch Changes
