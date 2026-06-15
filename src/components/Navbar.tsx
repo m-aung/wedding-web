@@ -3,13 +3,12 @@ import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styles from './Navbar.module.css'
 import { BRIDE, COUPLE_DISPLAY, GROOM } from '../constants/couple'
-import { useNavLinks } from '../hooks/useNavLinks'
+import NavList from './NavList'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const { i18n } = useTranslation()
   const monogram = `${GROOM.nickname.charAt(0)}&${BRIDE.nickname.charAt(0)}`
-  const navLinks = useNavLinks()
 
   const close = () => setOpen(false)
 
@@ -52,21 +51,7 @@ export default function Navbar() {
       {/* Mobile drawer */}
       {open && (
         <nav aria-label="Mobile navigation" className={styles.mobileNav}>
-          <ul className={styles.mobileList}>
-            {navLinks.map(({ to, label }) => (
-              <li key={to}>
-                <NavLink
-                  to={to}
-                  className={({ isActive }) =>
-                    `${styles.mobileLink} ${isActive ? styles.active : ''}`
-                  }
-                  onClick={close}
-                >
-                  {label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+          <NavList onLinkClick={close} />
         </nav>
       )}
     </header>

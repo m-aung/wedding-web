@@ -2,11 +2,10 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styles from './Home.module.css'
 import { BRIDE, GROOM, WEDDING } from '../constants/couple'
-import { useNavLinks } from '../hooks/useNavLinks'
+import NavList from '../components/NavList'
 
 export default function Home() {
   const { t } = useTranslation()
-  const quickLinks = useNavLinks()
 
   return (
     <div>
@@ -29,16 +28,8 @@ export default function Home() {
             <p className={styles.mobileWeddingDate}>{t('common.weddingDate')}</p>
           </div>
 
-          <nav className={styles.mobileQuickNav} aria-label="Quick page access">
-            {quickLinks.map(({ to, label }) => (
-              <Link
-                key={to}
-                to={to}
-                className={`${styles.mobileQuickLink} ${to === '/' ? styles.mobileQuickLinkActive : ''}`}
-              >
-                {label}
-              </Link>
-            ))}
+          <nav aria-label="Quick page access">
+            <NavList />
           </nav>
         </div>
       </section>
