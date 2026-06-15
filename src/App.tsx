@@ -12,6 +12,7 @@ import RSVP from './pages/RSVP'
 import TravelInfo from './pages/TravelInfo'
 import DressCode from './pages/DressCode'
 import QAndA from './pages/QAndA'
+import Registry from './pages/Registry'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="/q-and-a" element={<QAndA />} />
             <Route path="/rsvp" element={<RSVP />} />
             <Route path="/travel-info" element={<TravelInfo />} />
+            <Route path="/registry" element={<Registry />} />
           </Routes>
         <Footer />
         </main>

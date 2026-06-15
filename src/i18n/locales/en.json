@@ -6,7 +6,8 @@
     "dressCode": "Dress Code",
     "qAndA": "Q&A",
     "rsvp": "RSVP",
-    "travelRegistry": "Travel Info"
+    "travelRegistry": "Travel Info",
+    "registry": "Registry"
   },
   "common": {
     "openVenueMap": "Open Venue Map",
@@ -128,10 +129,6 @@
         "answer": "Parking is very limited. Please use nearby street parking. Kindly do not park on the grass. Carpooling is encouraged!"
       },
       {
-        "question": "Do you have a gift registry?",
-        "answer": "Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with a gift, we prefer monetary gift. Thank you for your generosity and love!"
-      },
-      {
         "question": "Will ceremony start on time?",
         "answer": "Yes, the ceremony will begin promptly at 3:30 PM. We recommend arriving by 2:45 PM to allow time for parking and finding your seat. We can't wait to celebrate with you!"
       },
@@ -219,6 +216,11 @@
       "emailRequired": "Please enter your email address.",
       "emailInvalid": "Please enter a valid email address."
     }
+  },
+  "registry": {
+    "pageTitle": "Registry",
+    "subtitle": "A Note on Gifts",
+    "message": "Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with a gift, we prefer a monetary gift. Thank you so much for your generosity and love!"
   },
   "travel": {
     "pageTitle": "Travel Info",
