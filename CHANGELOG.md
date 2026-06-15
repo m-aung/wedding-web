@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.0
+
+### Minor Changes
+
+- 8516329: Add a dedicated Registry page with the gift preference message, and remove the gift registry question from Q&A. Available in both English and Burmese.
+
 ## 0.10.5
 
 ### Patch Changes
