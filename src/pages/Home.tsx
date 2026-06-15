@@ -2,19 +2,11 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styles from './Home.module.css'
 import { BRIDE, GROOM, WEDDING } from '../constants/couple'
+import { useNavLinks } from '../hooks/useNavLinks'
 
 export default function Home() {
   const { t } = useTranslation()
-
-  const quickLinks = [
-    { to: '/', label: t('nav.home') },
-    { to: '/our-story', label: t('nav.ourStory') },
-    { to: '/events', label: t('nav.events') },
-    { to: '/dress-code', label: t('nav.dressCode') },
-    { to: '/q-and-a', label: t('nav.qAndA') },
-    { to: '/rsvp', label: t('nav.rsvp') },
-    { to: '/travel-info', label: t('nav.travelRegistry') },
-  ]
+  const quickLinks = useNavLinks()
 
   return (
     <div>

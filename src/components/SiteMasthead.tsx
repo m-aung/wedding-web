@@ -2,20 +2,11 @@ import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styles from './SiteMasthead.module.css'
 import { BRIDE, GROOM, WEDDING } from '../constants/couple'
+import { useNavLinks } from '../hooks/useNavLinks'
 
 export default function SiteMasthead() {
   const { t, i18n } = useTranslation()
-
-  const navLinks = [
-    { to: '/', label: t('nav.home') },
-    { to: '/our-story', label: t('nav.ourStory') },
-    { to: '/events', label: t('nav.events') },
-    { to: '/dress-code', label: t('nav.dressCode') },
-    { to: '/q-and-a', label: t('nav.qAndA') },
-    { to: '/registry', label: t('nav.registry') },
-    { to: '/rsvp', label: t('nav.rsvp') },
-    { to: '/travel-info', label: t('nav.travelRegistry') },
-  ]
+  const navLinks = useNavLinks()
 
   const daysToGo = Math.max(
     0,

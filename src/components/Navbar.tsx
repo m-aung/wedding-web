@@ -3,22 +3,13 @@ import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styles from './Navbar.module.css'
 import { BRIDE, COUPLE_DISPLAY, GROOM } from '../constants/couple'
+import { useNavLinks } from '../hooks/useNavLinks'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const { t, i18n } = useTranslation()
+  const { i18n } = useTranslation()
   const monogram = `${GROOM.nickname.charAt(0)}&${BRIDE.nickname.charAt(0)}`
-
-  const navLinks = [
-    { to: '/', label: t('nav.home') },
-    { to: '/our-story', label: t('nav.ourStory') },
-    { to: '/events', label: t('nav.events') },
-    { to: '/dress-code', label: t('nav.dressCode') },
-    { to: '/q-and-a', label: t('nav.qAndA') },
-    { to: '/registry', label: t('nav.registry') },
-    { to: '/rsvp', label: t('nav.rsvp') },
-    { to: '/travel-info', label: t('nav.travelRegistry') },
-  ]
+  const navLinks = useNavLinks()
 
   const close = () => setOpen(false)
 
