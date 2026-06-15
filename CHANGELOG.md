@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.1
+
+### Patch Changes
+
+- 1fa4c95: Consolidate navigation links into a single useNavLinks hook so all three nav surfaces (mobile drawer, desktop masthead, home quick-links) share one source of truth.
+
 ## 0.11.0
 
 ### Minor Changes
