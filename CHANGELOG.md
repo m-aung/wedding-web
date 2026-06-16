@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.12.0
+
+### Minor Changes
+
+- bf73645: The RSVP lookup now detects when an email is registered under a different name and shows a clear error. Guests whose email has changed can use the new 'Change Email' flow to transfer their existing RSVP to a new address.
+
+### Patch Changes
+
+- 273d254: The song request field is now hidden for new RSVP submissions. It only appears for guests who previously submitted a song request, preserving their ability to edit it.
+
 ## 0.11.1
 
 ### Patch Changes
