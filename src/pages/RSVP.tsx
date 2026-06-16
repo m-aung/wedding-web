@@ -32,6 +32,7 @@ export default function RSVP() {
   const [phase, setPhase] = useState<Phase>('lookup')
   const [existingRsvpId, setExistingRsvpId] = useState<string | null>(null)
   const [isEditing, setIsEditing] = useState(false)
+  const [hasPreviousSongRequest, setHasPreviousSongRequest] = useState(false)
   const [submittedAttendance, setSubmittedAttendance] = useState<'yes' | 'no'>('yes')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -108,9 +109,11 @@ export default function RSVP() {
       }))
       setExistingRsvpId(ex.id)
       setIsEditing(true)
+      setHasPreviousSongRequest(!!ex.song_request?.trim())
     } else {
       setIsEditing(false)
       setExistingRsvpId(null)
+      setHasPreviousSongRequest(false)
     }
 
     setPhase('form')
@@ -442,18 +445,20 @@ export default function RSVP() {
                     />
                   </div>
 
-                  {/* Song request */}
-                  <div className={styles.fieldGroup}>
-                    <label htmlFor="songRequest" className="input-label">{t('rsvp.form.songRequest')}</label>
-                    <input
-                      id="songRequest"
-                      type="text"
-                      className="input-field"
-                      placeholder={t('rsvp.form.songRequestPlaceholder')}
-                      value={form.songRequest}
-                      onChange={e => setForm({ ...form, songRequest: e.target.value })}
-                    />
-                  </div>
+                  {/* Song request — only shown if guest previously submitted one */}
+                  {hasPreviousSongRequest && (
+                    <div className={styles.fieldGroup}>
+                      <label htmlFor="songRequest" className="input-label">{t('rsvp.form.songRequest')}</label>
+                      <input
+                        id="songRequest"
+                        type="text"
+                        className="input-field"
+                        placeholder={t('rsvp.form.songRequestPlaceholder')}
+                        value={form.songRequest}
+                        onChange={e => setForm({ ...form, songRequest: e.target.value })}
+                      />
+                    </div>
+                  )}
                 </>
               )}
 
