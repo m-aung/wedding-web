@@ -11,7 +11,7 @@ const RSVP_IMG =
 
 const RSVP_DEADLINE = new Date('2026-08-01T23:59:59')
 
-type Phase = 'lookup' | 'form' | 'success' | 'contact-us'
+type Phase = 'lookup' | 'form' | 'success' | 'contact-us' | 'email-change'
 type AttendanceOption = 'yes' | 'no' | ''
 
 interface RsvpForm {
@@ -37,6 +37,8 @@ export default function RSVP() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [fieldErrors, setFieldErrors] = useState<{ fullName?: string; email?: string }>({})
+  const [oldEmail, setOldEmail] = useState('')
+  const [newEmail, setNewEmail] = useState('')
   const nameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)
 
@@ -98,6 +100,13 @@ export default function RSVP() {
     // Scenario 3a — one RSVP already on file; pre-fill for editing
     if (data.rsvp_count === 1 && data.existing_rsvp) {
       const ex = data.existing_rsvp as RsvpRow
+
+      // Name/email mismatch — found someone else's RSVP for this email
+      if (ex.full_name.toLowerCase().trim() !== form.fullName.toLowerCase().trim()) {
+        setError(t('rsvp.errors.nameMismatch'))
+        return
+      }
+
       setForm(f => ({
         ...f,
         attendance: ex.attendance,
@@ -116,6 +125,52 @@ export default function RSVP() {
       setHasPreviousSongRequest(false)
     }
 
+    setPhase('form')
+  }
+
+  // ── Email change flow ─────────────────────────────────────────────
+
+  const handleEmailChange = async (e: FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+
+    const { data, error: rpcError } = await supabase.rpc('transfer_rsvp_email', {
+      p_name:      form.fullName.trim(),
+      p_old_email: oldEmail.trim(),
+      p_new_email: newEmail.trim(),
+    })
+
+    setLoading(false)
+
+    if (rpcError || !data) {
+      setError(t('rsvp.errors.generic'))
+      return
+    }
+
+    if (!data.success) {
+      if (data.error_code === 'new_email_taken') {
+        setError(t('rsvp.errors.emailChangeTaken'))
+      } else {
+        setError(t('rsvp.errors.emailChangeNotFound'))
+      }
+      return
+    }
+
+    const ex = data.existing_rsvp as RsvpRow
+    setForm(f => ({
+      ...f,
+      email: newEmail.trim(),
+      attendance: ex.attendance,
+      plusOne: ex.plus_one,
+      kidsCount: ex.kids_count,
+      allergies: ex.allergies ?? '',
+      songRequest: ex.song_request ?? '',
+      notes: ex.notes ?? '',
+    }))
+    setExistingRsvpId(ex.id)
+    setIsEditing(true)
+    setHasPreviousSongRequest(!!ex.song_request?.trim())
     setPhase('form')
   }
 
@@ -345,15 +400,97 @@ export default function RSVP() {
 
               {error && <p className={styles.errorMsg} role="alert">{error}</p>}
 
-              <button
-                type="submit"
-                className="btn-primary"
-                style={{ alignSelf: 'flex-start' }}
-                disabled={loading}
-              >
-                {loading && <span className={styles.spinner} aria-hidden="true" />}
-                {loading ? t('rsvp.lookup.checking') : t('rsvp.lookup.button')}
-              </button>
+              <div className={styles.lookupActions}>
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  disabled={loading}
+                >
+                  {loading && <span className={styles.spinner} aria-hidden="true" />}
+                  {loading ? t('rsvp.lookup.checking') : t('rsvp.lookup.button')}
+                </button>
+                <button
+                  type="button"
+                  className="btn-ghost"
+                  onClick={() => { setError(null); setPhase('email-change') }}
+                >
+                  {t('rsvp.lookup.emailChanged')}
+                </button>
+              </div>
+            </form>
+          )}
+
+          {/* ── Email-change phase ───────────────────────────────── */}
+          {phase === 'email-change' && (
+            <form className={styles.form} onSubmit={handleEmailChange} noValidate>
+              <div>
+                <p className="headline-md">{t('rsvp.emailChange.title')}</p>
+                <p className="body-lg" style={{ color: 'var(--on-surface-variant)', marginTop: 8 }}>
+                  {t('rsvp.emailChange.subtitle')}
+                </p>
+              </div>
+
+              <div className={styles.fieldGroup}>
+                <label htmlFor="ecName" className="input-label">{t('rsvp.form.fullName')}</label>
+                <input
+                  id="ecName"
+                  type="text"
+                  className="input-field"
+                  placeholder={t('rsvp.form.fullNamePlaceholder')}
+                  value={form.fullName}
+                  onChange={e => setForm({ ...form, fullName: e.target.value.replace(/[^\p{L}\s]/gu, '') })}
+                  required
+                  autoComplete="name"
+                />
+              </div>
+
+              <div className={styles.fieldGroup}>
+                <label htmlFor="ecOldEmail" className="input-label">{t('rsvp.emailChange.oldEmail')}</label>
+                <input
+                  id="ecOldEmail"
+                  type="email"
+                  className="input-field"
+                  placeholder={t('rsvp.emailChange.oldEmailPlaceholder')}
+                  value={oldEmail}
+                  onChange={e => setOldEmail(e.target.value)}
+                  required
+                  autoComplete="email"
+                />
+              </div>
+
+              <div className={styles.fieldGroup}>
+                <label htmlFor="ecNewEmail" className="input-label">{t('rsvp.emailChange.newEmail')}</label>
+                <input
+                  id="ecNewEmail"
+                  type="email"
+                  className="input-field"
+                  placeholder={t('rsvp.emailChange.newEmailPlaceholder')}
+                  value={newEmail}
+                  onChange={e => setNewEmail(e.target.value)}
+                  required
+                  autoComplete="email"
+                />
+              </div>
+
+              {error && <p className={styles.errorMsg} role="alert">{error}</p>}
+
+              <div className={styles.formActions}>
+                <button
+                  type="button"
+                  className="btn-ghost"
+                  onClick={() => { setPhase('lookup'); setError(null) }}
+                >
+                  {t('rsvp.emailChange.back')}
+                </button>
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  disabled={loading || !oldEmail.trim() || !newEmail.trim() || !form.fullName.trim()}
+                >
+                  {loading && <span className={styles.spinner} aria-hidden="true" />}
+                  {loading ? t('rsvp.emailChange.submitting') : t('rsvp.emailChange.submit')}
+                </button>
+              </div>
             </form>
           )}
 

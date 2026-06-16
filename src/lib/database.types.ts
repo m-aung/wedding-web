@@ -73,6 +73,14 @@ export type Database = {
         }
         Returns: boolean
       }
+      transfer_rsvp_email: {
+        Args: { p_name: string; p_old_email: string; p_new_email: string }
+        Returns: {
+          success: boolean
+          error_code: string | null
+          existing_rsvp: RsvpRow | null
+        }
+      }
     }
     Enums: { [_ in never]: never }
     CompositeTypes: { [_ in never]: never }

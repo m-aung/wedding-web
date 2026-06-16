@@ -161,7 +161,8 @@
       "title": "Find Your Invitation",
       "subtitle": "Enter the name and email you used when you were invited.",
       "button": "Continue",
-      "checking": "Checking…"
+      "checking": "Checking…",
+      "emailChanged": "Change Email"
     },
     "form": {
       "fullName": "Full Name",
@@ -201,6 +202,17 @@
       "updated": "Your RSVP has been updated, {{name}}. We'll see you there!",
       "confirmation": "A confirmation has been sent to {{email}}."
     },
+    "emailChange": {
+      "title": "Update Your Email",
+      "subtitle": "Enter the name and old email used when you originally RSVP'd, plus your new email address.",
+      "oldEmail": "Email You Originally Used",
+      "oldEmailPlaceholder": "old@email.com",
+      "newEmail": "Your New Email Address",
+      "newEmailPlaceholder": "new@email.com",
+      "submit": "Update & Continue",
+      "submitting": "Updating…",
+      "back": "Back"
+    },
     "contactUs": {
       "title": "Please Reach Out",
       "message": "It looks like we already have multiple RSVPs on file for your information. Please contact us directly and we'll get everything sorted out."
@@ -212,6 +224,9 @@
     "errors": {
       "generic": "Something went wrong. Please try again or contact us directly.",
       "notOnList": "We couldn't find your name on our guest list. Please double-check the spelling or reach out to us directly for help.",
+      "nameMismatch": "This email address is registered under a different name. Please double-check the email you used when you submitted your RSVP.",
+      "emailChangeNotFound": "We couldn't find an RSVP matching that name and email. Please double-check the details.",
+      "emailChangeTaken": "Your new email address already has an RSVP on file. Please contact us directly for help.",
       "nameRequired": "Please enter your full name.",
       "emailRequired": "Please enter your email address.",
       "emailInvalid": "Please enter a valid email address."
