@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.0
+
+### Minor Changes
+
+- 164f292: Set Burmese (my) as the default language
+
 ## 0.12.0
 
 ### Minor Changes
