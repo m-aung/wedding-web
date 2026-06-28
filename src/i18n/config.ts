@@ -14,12 +14,13 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
+    lng: 'my',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false, // React already escapes values
     },
     detection: {
-      order: ['localStorage', 'navigator'],
+      order: ['localStorage'],
       caches: ['localStorage'],
     },
   })
