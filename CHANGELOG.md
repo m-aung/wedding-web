@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.1
+
+### Patch Changes
+
+- 57ec8d3: Extend the RSVP deadline to August 20th, 2026 and update the deadline messaging in both English and Burmese.
+
 ## 0.13.0
 
 ### Minor Changes
