@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.2
+
+### Patch Changes
+
+- 79ce3f1: Extend RSVP deadline to August 31st, 2026.
+
 ## 0.13.1
 
 ### Patch Changes
