@@ -156,7 +156,7 @@
   },
   "rsvp": {
     "pageTitle": "The Pleasure of Your Company",
-    "deadline": "Kindly respond by August Twentieth",
+    "deadline": "Kindly respond by August Thirty-First",
     "lookup": {
       "title": "Find Your Invitation",
       "subtitle": "Enter the name and email you used when you were invited.",
@@ -219,7 +219,7 @@
     },
     "deadlinePassed": {
       "title": "RSVP Deadline Has Passed",
-      "message": "Thank you so much for your love and support. Unfortunately, the RSVP deadline of August 20th has passed, and we are no longer able to accept new reservations or updates. If you have any questions, please don't hesitate to reach out to us."
+      "message": "Thank you so much for your love and support. Unfortunately, the RSVP deadline of August 31st has passed, and we are no longer able to accept new reservations or updates. If you have any questions, please don't hesitate to reach out to us."
     },
     "errors": {
       "generic": "Something went wrong. Please try again or contact us directly.",

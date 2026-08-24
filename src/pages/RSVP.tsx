@@ -9,7 +9,7 @@ import { WEDDING, COUPLE_EMAIL } from '../constants/couple'
 const RSVP_IMG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDLSHiy6jultd-Yd5b5adQpBM25F2TxLIfrc5ZlW1hlGlGtGRc1HtZ6zrYV_lcxTONGE7QM6EKhVbl9TAWS-NsEPkN_xeLI7h5QsUqz-9UMvtJTkRikJEtySFOt6cGRlJSUb7xVwTpPDkFw6bu-PQF6aEQsCUyl0uB2JiXhJWsSGDyX_eEynh1wVW4NhtYRRa7hk01iafCks-J0K24KKq6Ejo5yLSXuzBUttXDKMsCoO0MKmXZM5cjT5RF8Kk0RkRdsZVpBAcN2yhs'
 
-const RSVP_DEADLINE = new Date('2026-08-20T23:59:59')
+const RSVP_DEADLINE = new Date('2026-08-31T23:59:59')
 
 type Phase = 'lookup' | 'form' | 'success' | 'contact-us' | 'email-change'
 type AttendanceOption = 'yes' | 'no' | ''
