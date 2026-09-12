@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.13.3
+
+### Patch Changes
+
+- 4291cdd: Update the couple's contact email to myoandyoon@gmail.com across the site and travel tips.
+- 2683988: Move karaoke start time from 7:45 PM to 7:30 PM on the wedding timeline.
+
 ## 0.13.2
 
 ### Patch Changes
