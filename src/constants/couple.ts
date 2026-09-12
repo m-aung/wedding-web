@@ -27,7 +27,7 @@ export const WEDDING = {
 export const COUPLE_DISPLAY = `${GROOM.nickname} & ${BRIDE.nickname}` as const
 
 /** Contact email derived from couple nicknames */
-export const COUPLE_EMAIL = `travel@${GROOM.nickname.toLowerCase()}and${BRIDE.nickname.toLowerCase()}.com`
+export const COUPLE_EMAIL = `myoandyoon@gmail.com`
 
 /** Hotel booking code */
 export const HOTEL_BOOKING_CODE = `${GROOM.nickname.toUpperCase()}${BRIDE.nickname.toUpperCase()}24`

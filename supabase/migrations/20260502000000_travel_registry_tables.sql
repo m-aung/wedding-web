@@ -95,7 +95,7 @@ insert into public.travel_tips (icon, title, body, sort_order) values
   ('cloud',          'Weather',
    'Expect crisp autumn weather. Evenings can be cool, ranging from 55°F to 65°F.', 3),
   ('info',           'Assistance',
-   'For any travel-related questions, please contact our coordinator at travel@myoandyoon.com.', 4);
+   'For any travel-related questions, please contact our coordinator at myoandyoon@gmail.com.', 4);
 
 insert into public.registry_items
   (subtitle, title, store_name, store_url, image_url, is_fund, description, sort_order)
