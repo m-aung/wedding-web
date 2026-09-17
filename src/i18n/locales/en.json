@@ -4,6 +4,7 @@
     "ourStory": "Our Story",
     "events": "Events",
     "agenda": "Agenda",
+    "seatingChart": "Seating Chart",
     "dressCode": "Dress Code",
     "qAndA": "Q&A",
     "rsvp": "RSVP",
@@ -165,6 +166,44 @@
     ],
     "ctaNext": "Next",
     "ctaTitle": "Ready to Join Us?"
+  },
+  "seatingChart": {
+    "pageTitle": "Seating Chart",
+    "subtitle": "Find Your Seat",
+    "intro": "Find your name below to see which table you'll be seated at for the reception.",
+    "tableLabel": "Table",
+    "tables": [
+      {
+        "number": 1,
+        "name": "Sweetheart Table",
+        "guests": ["Myo Aung", "Yoon Aung"]
+      },
+      {
+        "number": 2,
+        "name": "Lavender",
+        "guests": ["Guest Name 1", "Guest Name 2", "Guest Name 3", "Guest Name 4"]
+      },
+      {
+        "number": 3,
+        "name": "Sage",
+        "guests": ["Guest Name 5", "Guest Name 6", "Guest Name 7", "Guest Name 8"]
+      },
+      {
+        "number": 4,
+        "name": "Blush",
+        "guests": ["Guest Name 9", "Guest Name 10", "Guest Name 11", "Guest Name 12"]
+      },
+      {
+        "number": 5,
+        "name": "Magnolia",
+        "guests": ["Guest Name 13", "Guest Name 14", "Guest Name 15", "Guest Name 16"]
+      },
+      {
+        "number": 6,
+        "name": "Wisteria",
+        "guests": ["Guest Name 17", "Guest Name 18", "Guest Name 19", "Guest Name 20"]
+      }
+    ]
   },
   "dressCode": {
     "pageTitle": "Dress Code",

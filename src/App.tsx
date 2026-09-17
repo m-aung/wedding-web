@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import OurStory from './pages/OurStory'
 import Events from './pages/Events'
 import Agenda from './pages/Agenda'
+import SeatingChart from './pages/SeatingChart'
 import RSVP from './pages/RSVP'
 import TravelInfo from './pages/TravelInfo'
 import DressCode from './pages/DressCode'
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="/our-story" element={<OurStory />} />
             <Route path="/events" element={<Events />} />
             <Route path="/agenda" element={<Agenda />} />
+            <Route path="/seating-chart" element={<SeatingChart />} />
             <Route path="/dress-code" element={<DressCode />} />
             <Route path="/q-and-a" element={<QAndA />} />
             <Route path="/rsvp" element={<RSVP />} />

@@ -1,0 +1,46 @@
+.hero {
+  padding-top: clamp(96px, 12vw, 140px);
+}
+
+.pageTitle {
+  margin-top: 8px;
+  line-height: 1;
+}
+
+:global(:lang(my)) .pageTitle {
+  line-height: 1.6;
+  letter-spacing: 0;
+  margin-top: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.card {
+  background: var(--surface-container-lowest);
+  padding: clamp(24px, 3vw, 36px);
+  min-height: 100%;
+}
+
+.guestList {
+  list-style: none;
+  margin-top: 16px;
+}
+
+.guestList li {
+  padding-block: 8px;
+  border-top: 1px solid var(--outline-variant);
+}
+
+.guestList li:first-child {
+  border-top: none;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

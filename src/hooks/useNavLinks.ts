@@ -7,6 +7,7 @@ export function useNavLinks() {
     { to: '/our-story', label: t('nav.ourStory') },
     { to: '/events', label: t('nav.events') },
     { to: '/agenda', label: t('nav.agenda') },
+    { to: '/seating-chart', label: t('nav.seatingChart') },
     { to: '/dress-code', label: t('nav.dressCode') },
     { to: '/q-and-a', label: t('nav.qAndA') },
     { to: '/registry', label: t('nav.registry') },
