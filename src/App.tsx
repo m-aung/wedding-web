@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import OurStory from './pages/OurStory'
 import Events from './pages/Events'
+import Agenda from './pages/Agenda'
 import RSVP from './pages/RSVP'
 import TravelInfo from './pages/TravelInfo'
 import DressCode from './pages/DressCode'
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/our-story" element={<OurStory />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/agenda" element={<Agenda />} />
             <Route path="/dress-code" element={<DressCode />} />
             <Route path="/q-and-a" element={<QAndA />} />
             <Route path="/rsvp" element={<RSVP />} />

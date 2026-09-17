@@ -1,0 +1,76 @@
+.hero {
+  padding-top: clamp(96px, 12vw, 140px);
+}
+
+.pageTitle {
+  margin-top: 8px;
+  line-height: 1;
+}
+
+:global(:lang(my)) .pageTitle {
+  line-height: 1.6;
+  letter-spacing: 0;
+  margin-top: 16px;
+}
+
+/* ── Timeline ────────────────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.itemCard {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 40px;
+  padding-block: 40px;
+  align-items: flex-start;
+  border-top: 1px solid var(--outline-variant);
+}
+
+.itemCard:first-child {
+  border-top: none;
+}
+
+.timeCol {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.time {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+.itemIcon {
+  color: var(--secondary);
+  font-size: 22px !important;
+}
+
+.itemBody {
+  padding-bottom: 8px;
+}
+
+.itemLocation {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  color: var(--on-surface-variant);
+}
+
+.itemLocation .material-icons {
+  font-size: 18px;
+}
+
+@media (max-width: 640px) {
+  .itemCard {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

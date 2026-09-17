@@ -3,6 +3,7 @@
     "home": "Home",
     "ourStory": "Our Story",
     "events": "Events",
+    "agenda": "Agenda",
     "dressCode": "Dress Code",
     "qAndA": "Q&A",
     "rsvp": "RSVP",
@@ -14,6 +15,7 @@
     "viewMore": "View More",
     "viewEvents": "View Events",
     "viewQAndA": "View Q&A",
+    "viewRsvp": "RSVP Now",
     "coupleName": "Myo & Yoon",
     "weddingDate": "Saturday, September 19, 2026",
     "weddingDateShort": "9.19.2026",
@@ -87,6 +89,82 @@
     "transportTitle": "Getting to the Venue",
     "transportDetail": "The closest LIRR station is Mastic-Shirley (Montauk Branch), a short distance from the venue — we recommend taking an Uber or Lyft from there. Parking at the venue is limited, so rideshare is highly encouraged.",
     "moreTravel": "More Travel Info"
+  },
+  "agenda": {
+    "pageTitle": "The Full Agenda",
+    "subtitle": "Wedding Day Itinerary",
+    "intro": "A detailed, minute-by-minute look at our wedding day so you know exactly what to expect and when.",
+    "items": [
+      {
+        "time": "3:00 PM",
+        "title": "Guest Arrival",
+        "detail": "Please make your way to 9 Fire Place and find your seat before the ceremony begins.",
+        "location": "9 Fire Place",
+        "icon": "directions_car"
+      },
+      {
+        "time": "3:30 – 4:00 PM",
+        "title": "The Ceremony",
+        "detail": "Join us as we exchange our vows.",
+        "icon": "favorite"
+      },
+      {
+        "time": "4:00 – 5:00 PM",
+        "title": "Cocktail Hour",
+        "detail": "Enjoy drinks, lawn games, and sign our Polaroid guest book while we sneak off for photos.",
+        "icon": "local_bar"
+      },
+      {
+        "time": "5:00 – 6:15 PM",
+        "title": "Buffet Dinner",
+        "detail": "Help yourself to a buffet-style dinner with a variety of options.",
+        "icon": "restaurant"
+      },
+      {
+        "time": "6:05 – 6:15 PM",
+        "title": "Toasts & Speeches",
+        "detail": "A few words from our nearest and dearest.",
+        "icon": "record_voice_over"
+      },
+      {
+        "time": "6:15 – 6:25 PM",
+        "title": "First Dance",
+        "detail": "Our first dance as a married couple.",
+        "icon": "music_note"
+      },
+      {
+        "time": "6:25 – 7:00 PM",
+        "title": "Cocktails & Mingling",
+        "detail": "We'll slip away for sunset photos and a quick outfit change — grab a drink, enjoy the music, and mingle with fellow guests.",
+        "icon": "wine_bar"
+      },
+      {
+        "time": "7:00 – 7:10 PM",
+        "title": "Surprise Video",
+        "detail": "A special surprise we've put together just for you.",
+        "icon": "movie"
+      },
+      {
+        "time": "7:10 – 7:20 PM",
+        "title": "Cake Cutting",
+        "detail": "Watch us cut the cake together.",
+        "icon": "cake"
+      },
+      {
+        "time": "7:20 – 7:30 PM",
+        "title": "Bouquet Toss",
+        "detail": "Single guests, gather round — who's catching the bouquet?",
+        "icon": "local_florist"
+      },
+      {
+        "time": "7:30 PM",
+        "title": "Dessert & Karaoke",
+        "detail": "The dessert table opens and karaoke kicks off — grab the mic and dance the night away!",
+        "icon": "mic"
+      }
+    ],
+    "ctaNext": "Next",
+    "ctaTitle": "Ready to Join Us?"
   },
   "dressCode": {
     "pageTitle": "Dress Code",
