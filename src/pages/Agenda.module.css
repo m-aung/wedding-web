@@ -23,7 +23,7 @@
 .itemCard {
   display: grid;
   grid-template-columns: 150px 1fr;
-  gap: 40px;
+  gap: 70px;
   padding-block: 40px;
   align-items: flex-start;
   border-top: 1px solid var(--outline-variant);

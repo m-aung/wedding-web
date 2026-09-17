@@ -52,21 +52,6 @@ export default function Agenda() {
           </div>
         </div>
       </section>
-
-      <section className="section surface-low">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <p className="title-sm">{t('agenda.ctaNext')}</p>
-          <h2 className="headline-lg" style={{ marginTop: 12 }}>
-            {t('agenda.ctaTitle')}
-          </h2>
-          <div style={{ marginTop: 32 }}>
-            <Link to="/rsvp" className="btn-primary">
-              {t('common.viewRsvp')}
-              <span className="material-icons" aria-hidden="true">arrow_forward</span>
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
