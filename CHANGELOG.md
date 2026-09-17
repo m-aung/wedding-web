@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.14.0
+
+### Minor Changes
+
+- 323972c: Add a detailed Wedding Day Agenda page (/agenda) with a guest-facing, minute-by-minute timeline from arrival through dessert and karaoke, available in English and Burmese, with a link added to site navigation.
+
 ## 0.13.3
 
 ### Patch Changes
