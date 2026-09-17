@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.15.0
+
+### Minor Changes
+
+- 799d3e9: Add a new Seating Chart page listing reception table names and guests, with English and Burmese translations and a nav link, ready for real table assignments to be filled in later.
+
+### Patch Changes
+
+- 71add7c: Remove the redundant "Ready to join us?" RSVP call-to-action section from the Agenda page, and widen the gap between the time and description columns in the agenda timeline for better readability.
+
 ## 0.14.0
 
 ### Minor Changes
