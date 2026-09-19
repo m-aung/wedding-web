@@ -177,29 +177,39 @@
         "guests": ["မျိုး အောင်", "ယွန်း အောင်"]
       },
       {
+        "number": 1,
+        "name": "Sweetheart Table",
+        "guests": ["Myo Aung", "Yoon Aung"]
+      },
+      {
         "number": 2,
-        "name": "Lavender",
-        "guests": ["ဧည့်သည် ၁", "ဧည့်သည် ၂", "ဧည့်သည် ၃", "ဧည့်သည် ၄"]
+        "name": "Table - 1 (Right)",
+        "guests": ["Khin Lae Han", "Zin", "Soe Moe", "Daung", "Michael", "Nan Khin Thida Naing"]
       },
       {
         "number": 3,
-        "name": "Sage",
-        "guests": ["ဧည့်သည် ၅", "ဧည့်သည် ၆", "ဧည့်သည် ၇", "ဧည့်သည် ၈"]
+        "name": "Table - 2 (Right)",
+        "guests": ["Mya Theingi", "Thandar Aung", "Kyaw Htet", "May Oo", " Mg Jaw Bu", "Thin New Aung", "Hnin Oo Shwe Yi"]
       },
       {
         "number": 4,
-        "name": "Blush",
-        "guests": ["ဧည့်သည် ၉", "ဧည့်သည် ၁၀", "ဧည့်သည် ၁၁", "ဧည့်သည် ၁၂"]
+        "name": "Table - 1 (Left)",
+        "guests": ["Dr. Soe Thein", "Dr. Jacob", "No No", "Thiri", " Nwe Oo Mon", "Daniel"]
       },
       {
         "number": 5,
-        "name": "Magnolia",
-        "guests": ["ဧည့်သည် ၁၃", "ဧည့်သည် ၁၄", "ဧည့်သည် ၁၅", "ဧည့်သည် ၁၆"]
+        "name": "Table - 2 (Left)",
+        "guests": ["Dr. Aung Myo Hein", "Su Nyein Nyein Thant", "Hnin Kyaw Hlaing", "Shun Lae Thu", " Nan La Pyae Won", "Zin Zin Mar"]
       },
       {
         "number": 6,
-        "name": "Wisteria",
-        "guests": ["ဧည့်သည် ၁၇", "ဧည့်သည် ၁၈", "ဧည့်သည် ၁၉", "ဧည့်သည် ၂၀"]
+        "name": "Table - 3 (Left)",
+        "guests": ["Dr. Khaing Shwe Lin", "Dr. Bryan Law", "Nick", "Hnin Klarquist", "Scott Klarquist", "Lucas Klarquist"]
+      },
+      {
+        "number": 7,
+        "name": "Table - 4 (Left)",
+        "guests": ["Thazin Ei", "Wefeng Li", "Nauru Bai", "Leti Altamirano", "Coordinator 1", "Coordinator 2"]
       }
     ]
   },
