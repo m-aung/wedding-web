@@ -180,28 +180,33 @@
       },
       {
         "number": 2,
-        "name": "Lavender",
-        "guests": ["Guest Name 1", "Guest Name 2", "Guest Name 3", "Guest Name 4"]
+        "name": "Table - 1 (Right)",
+        "guests": ["Khin Lae Han", "Zin", "Soe Moe", "Daung", "Michael", "Nan Khin Thida Naing"]
       },
       {
         "number": 3,
-        "name": "Sage",
-        "guests": ["Guest Name 5", "Guest Name 6", "Guest Name 7", "Guest Name 8"]
+        "name": "Table - 2 (Right)",
+        "guests": ["Mya Theingi", "Thandar Aung", "Kyaw Htet", "May Oo", " Mg Jaw Bu", "Thin New Aung", "Hnin Oo Shwe Yi"]
       },
       {
         "number": 4,
-        "name": "Blush",
-        "guests": ["Guest Name 9", "Guest Name 10", "Guest Name 11", "Guest Name 12"]
+        "name": "Table - 1 (Left)",
+        "guests": ["Dr. Soe Thein", "Dr. Jacob", "No No", "Thiri", " Nwe Oo Mon", "Daniel"]
       },
       {
         "number": 5,
-        "name": "Magnolia",
-        "guests": ["Guest Name 13", "Guest Name 14", "Guest Name 15", "Guest Name 16"]
+        "name": "Table - 2 (Left)",
+        "guests": ["Dr. Aung Myo Hein", "Su Nyein Nyein Thant", "Hnin Kyaw Hlaing", "Shun Lae Thu", " Nan La Pyae Won", "Zin Zin Mar"]
       },
       {
         "number": 6,
-        "name": "Wisteria",
-        "guests": ["Guest Name 17", "Guest Name 18", "Guest Name 19", "Guest Name 20"]
+        "name": "Table - 3 (Left)",
+        "guests": ["Dr. Khaing Shwe Lin", "Dr. Bryan Law", "Nick", "Hnin Klarquist", "Scott Klarquist", "Lucas Klarquist"]
+      },
+      {
+        "number": 7,
+        "name": "Table - 4 (Left)",
+        "guests": ["Thazin Ei", "Wefeng Li", "Nauru Bai", "Leti Altamirano", "Coordinator 1", "Coordinator 2"]
       }
     ]
   },
